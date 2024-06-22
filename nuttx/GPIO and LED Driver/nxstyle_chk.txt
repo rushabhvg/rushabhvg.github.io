@@ -1,13 +1,16 @@
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/arch/risc-v/src/bl808/Make.defs \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/arch/risc-v/src/bl808/bl808_gpio.c \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/arch/risc-v/src/bl808/bl808_gpio.h \                     
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/arch/risc-v/src/bl808/hardware/bl808_glb.h \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/Kconfig \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/configs/nsh/defconfig \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/include/board.h \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/scripts/gnu-elf.ld \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/scripts/ld.script \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/src/Makefile \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/src/bl808_appinit.c \
-~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/src/bl808_autoleds.c \
+gcc -o ~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/tools/nxstyle.c
+
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/arch/risc-v/src/bl808/Make.defs
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/arch/risc-v/src/bl808/bl808_gpio.c
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/arch/risc-v/src/bl808/bl808_gpio.h
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/arch/risc-v/src/bl808/bl808_memorymap.h
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/arch/risc-v/src/bl808/hardware/bl808_glb.h
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/Kconfig
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/configs/nsh/defconfig
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/include/board.h
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/scripts/gnu-elf.ld
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/scripts/ld.script
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/src/Makefile
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/src/bl808_appinit.c
+~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/src/bl808_autoleds.c
 ~/Desktop/nuttx/nxstyle ~/Desktop/nuttx/nuttx/boards/risc-v/bl808/ox64/src/bl808_userleds.c
