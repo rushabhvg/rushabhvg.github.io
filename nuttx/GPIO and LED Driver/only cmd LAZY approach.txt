@@ -1,0 +1,69 @@
+cd nuttx/
+
+tools/configure.sh ox64:nsh
+
+make menuconfig
+
+rustup target add riscv64gc-unknown-none-elf
+
+make
+
+riscv-none-elf-objcopy \
+  -O binary \
+  nuttx \
+  nuttx.bin
+
+riscv-none-elf-objdump \
+  --syms --source --reloc --demangle --line-numbers --wide \
+  --debugging \
+  nuttx \
+  >nuttx.S \
+  2>&1
+
+make -j 8 export
+
+pushd ../apps
+
+./tools/mkimport.sh -z -x ../nuttx/nuttx-export-*.tar.gz
+
+rustup target add riscv64gc-unknown-none-elf
+
+pushd ../apps/examples/hello_rust
+
+hello=$(basename ../hello/*hello.o)
+
+ hello_rust=`
+  echo $hello \
+  | sed "s/hello_main.c/hello_rust_main.rs/" \
+  | sed "s/hello.o/hello_rust.o/"
+  `
+
+rustc \
+  --target riscv64gc-unknown-none-elf \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  hello_rust_main.rs \
+  -o $hello_rust
+
+popd
+
+make import
+
+popd
+
+genromfs \
+  -f initrd \
+  -d ../apps/bin \
+  -V "NuttXBootVol"
+
+head -c 65536 /dev/zero >/tmp/nuttx.pad
+
+cat nuttx.bin /tmp/nuttx.pad initrd \
+  >Image
+
+cd ../
+
+./temu nuttx.cfg
