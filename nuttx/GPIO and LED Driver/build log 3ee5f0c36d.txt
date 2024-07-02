@@ -1,0 +1,437 @@
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ cd nuttx/
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ tools/configure.sh ox64:nsh
+No configuration change.
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ make menuconfig
+CP: arch/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/nuttx/arch/dummy/dummy_kconfig
+CP: boards/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/nuttx/boards/dummy/dummy_kconfig
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform/dummy
+LN: include/arch to arch/risc-v/include
+LN: include/arch/board to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/nuttx/boards/risc-v/bl808/ox64/include
+LN: drivers/platform to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/nuttx/drivers/dummy
+LN: include/arch/chip to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/nuttx/arch/risc-v/include/bl808
+LN: arch/risc-v/src/chip to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/nuttx/arch/risc-v/src/bl808
+LN: arch/risc-v/src/board to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/nuttx/boards/risc-v/bl808/ox64/src
+
+
+*** End of the configuration.
+*** Execute 'make' to start the build or try 'make help'.
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ rustup target add riscv64gc-unknown-none-elf
+info: component 'rust-std' for target 'riscv64gc-unknown-none-elf' is up to date
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ make
+Create version.h
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform/dummy
+Register: hello
+Register: hello_rust
+Register: init
+Register: sh
+Register: getprime
+Register: ostest
+CPP:  /home/rushabhvg/Desktop/nuttx/tmp/gpio3/nuttx/boards/risc-v/bl808/ox64/scripts/ld.script-> /home/rushabhvg/Desktop/nuttx/tmp/gpio3/nuttx/boards/risc-v/bl808/ox64/scripts/ld.script.tmpLD: nuttx
+CP: nuttx.hex
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ riscv-none-elf-objcopy \
+  -O binary \
+  nuttx \
+  nuttx.bin
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ riscv-none-elf-objdump \
+  --syms --source --reloc --demangle --line-numbers --wide \
+  --debugging \
+  nuttx \
+  >nuttx.S \
+  2>&1
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ make -j 8 export
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ pushd ../apps
+~/Desktop/nuttx/tmp/gpio3/apps ~/Desktop/nuttx/tmp/gpio3/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps$ ./tools/mkimport.sh -z -x ../nuttx/nuttx-export-*.tar.gz
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps$ rustup target add riscv64gc-unknown-none-elf
+info: component 'rust-std' for target 'riscv64gc-unknown-none-elf' is up to date
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps$ pushd ../apps/examples/hello_rust
+~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust ~/Desktop/nuttx/tmp/gpio3/apps ~/Desktop/nuttx/tmp/gpio3/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust$ hello=$(basename ../hello/*hello.o)
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust$  hello_rust=`
+  echo $hello \
+  | sed "s/hello_main.c/hello_rust_main.rs/" \
+  | sed "s/hello.o/hello_rust.o/"
+  `
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust$ rustc \
+  --target riscv64gc-unknown-none-elf \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  hello_rust_main.rs \
+  -o $hello_rust
+warning: unnecessary parentheses around `if` condition
+   --> hello_rust_main.rs:102:13
+    |
+102 |          if (fd < 0) {
+    |             ^      ^
+    |
+    = note: `#[warn(unused_parens)]` on by default
+help: remove these parentheses
+    |
+102 -          if (fd < 0) {
+102 +          if fd < 0 {
+    |
+
+warning: unnecessary parentheses around `if` condition
+   --> hello_rust_main.rs:117:13
+    |
+117 |          if (ret < 0) {
+    |             ^       ^
+    |
+help: remove these parentheses
+    |
+117 -          if (ret < 0) {
+117 +          if ret < 0 {
+    |
+
+warning: unnecessary parentheses around `if` condition
+   --> hello_rust_main.rs:137:13
+    |
+137 |          if (ret < 0) {
+    |             ^       ^
+    |
+help: remove these parentheses
+    |
+137 -          if (ret < 0) {
+137 +          if ret < 0 {
+    |
+
+warning: 3 warnings emitted
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust$ popd
+~/Desktop/nuttx/tmp/gpio3/apps ~/Desktop/nuttx/tmp/gpio3/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps$ make import
+cc  -O2 -Wall -Wstrict-prototypes -Wshadow -DHAVE_STRTOK_C=1 /home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/import/tools/mkdeps.c -o /home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/import/tools/mkdeps
+cc  -O2 -Wall -Wstrict-prototypes -Wshadow -DHAVE_STRTOK_C=1 /home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/import/tools/incdir.c -o "/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/import/tools/incdir"
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform/dummy
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Nothing to be done for 'context_wasm'.
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Nothing to be done for 'register'.
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+cp nsh_alias.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_alias.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_command.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_command.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_console.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_console.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_consolemain.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_consolemain.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_dbgcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_dbgcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_ddcmd.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_ddcmd.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_envcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_envcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_fileapps.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_fileapps.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_fscmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_fscmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_fsutils.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_fsutils.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_init.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_init.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_mmcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_mmcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_mntcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_mntcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_parse.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_parse.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_printf.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_printf.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_proccmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_proccmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_prompt.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_prompt.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_script.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_script.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_session.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_session.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_syscmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_syscmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_system.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_system.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_test.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_test.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+cp nsh_timcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib.o  nsh_timcmds.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.nshlib_1.o
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+cp dummy.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.platform.o  dummy.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.platform_1.o
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+cp readline.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.system.readline.o  readline.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.system.readline_1.o
+cp readline_common.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.system.readline.o  readline_common.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.system.readline_1.o
+cp readline_fd.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.system.readline.o  readline_fd.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.system.readline_1.o
+cp readline_stream.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.system.readline.o  readline_stream.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.system.readline_1.o
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+cp barrier.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  barrier.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp cancel.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  cancel.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp cond.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  cond.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp dev_null.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  dev_null.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+CC:  fpu.c fpu.c:55:8: warning: #warning "FPU test not built; Only available in the flat build (CONFIG_BUILD_FLAT)" [-Wcpp]
+   55 | #      warning "FPU test not built; Only available in the flat build (CONFIG_BUILD_FLAT)"
+      |        ^~~~~~~
+cp fpu.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  fpu.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp getopt.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  getopt.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp libc_memmem.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  libc_memmem.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp mqueue.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  mqueue.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp mutex.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  mutex.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp posixtimer.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  posixtimer.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp pthread_exit.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  pthread_exit.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp pthread_rwlock.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  pthread_rwlock.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp pthread_rwlock_cancel.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  pthread_rwlock_cancel.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp restart.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  restart.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp robust.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  robust.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp roundrobin.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  roundrobin.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp schedlock.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  schedlock.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp sem.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  sem.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp semtimed.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  semtimed.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp setvbuf.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  setvbuf.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp sighand.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  sighand.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp sighelper.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  sighelper.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp signest.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  signest.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp sigprocmask.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  sigprocmask.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp timedmqueue.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  timedmqueue.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp timedmutex.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  timedmutex.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp timedwait.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  timedwait.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp vfork.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  vfork.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp waitpid.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  waitpid.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+cp wqueue.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest.o  wqueue.c.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.testing.ostest_1.o
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: *** No rule to make target 'hello_rust_main.rs.home.rushabhvg.Desktop.nuttx.tmp.gpio3.apps.examples.hello_rust.o', needed by '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/bin/hello_rust'.  Stop.
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[2]: *** [Makefile:52: /home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust_install] Error 2
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: *** [Makefile:97: .import] Error 2
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make: *** [Makefile:103: import] Error 2
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps$ rustup target add riscv64gc-unknown-none-elf
+info: component 'rust-std' for target 'riscv64gc-unknown-none-elf' is up to date
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps$ pushd ../apps/examples/hello_rust
+~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust ~/Desktop/nuttx/tmp/gpio3/apps ~/Desktop/nuttx/tmp/gpio3/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust$ hello=$(basename ../hello/*hello.o)
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust$ hello_rust=`
+  echo $hello \
+  | sed "s/hello_main.c/hello_rust_main.rs/" \
+  | sed "s/hello.o/hello_rust.o/"
+  `
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust$ rustc \
+  --target riscv64gc-unknown-none-elf \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  hello_rust_main.rs \
+  -o $hello_rust
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust$ popd
+~/Desktop/nuttx/tmp/gpio3/apps ~/Desktop/nuttx/tmp/gpio3/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps$ make import
+cc  -O2 -Wall -Wstrict-prototypes -Wshadow -DHAVE_STRTOK_C=1 /home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/import/tools/incdir.c -o "/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/import/tools/incdir"
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform/dummy
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Nothing to be done for 'context_wasm'.
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Nothing to be done for 'register'.
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/examples/hello_rust'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/nshlib'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/platform'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/nsh'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/system/readline'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/getprime'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/gpio3/apps'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/apps$ popd
+~/Desktop/nuttx/tmp/gpio3/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ genromfs \
+  -f initrd \
+  -d ../apps/bin \
+  -V "NuttXBootVol"
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ head -c 65536 /dev/zero >/tmp/nuttx.pad
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ cat nuttx.bin /tmp/nuttx.pad initrd \
+  >Image
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3/nuttx$ cd ../../
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp$ cd ../
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx$ ./temu nuttx.cfg
+TinyEMU Emulator for Ox64 BL808 RISC-V SBC
+virtio_console_init
+Patched DCACHE.IALL (Invalidate all Page Table Entries in the D-Cache) at 0x50200bf4
+Patched SYNC.S (Ensure that all Cache Operations are completed) at 0x50200bf8
+Found ECALL (Start System Timer) at 0x5020cc46
+Patched RDTIME (Read System Time) at 0x5020cc4c
+elf_len=0
+virtio_console_resize_event
+ABCnx_start: Entry
+uart_register: Registering /dev/console
+uart_register: Registering /dev/ttyS0
+uart_register: Registering /dev/ttyS1
+uart_register: Registering /dev/ttyS2
+work_start_lowpri: Starting low-priority kernel worker thread(s)
+nxtask_activate: lpwork pid=1,TCB=0x5040a800
+nxtask_activate: AppBringUp pid=2,TCB=0x5040a980
+{"nuttxemu":{"gpio29":0}}
+{"nuttxemu":{"gpio29":0}}
+nx_start_application: Starting init task: /system/bin/init
+nxtask_activate: /system/bin/init pid=3,TCB=0x5040af80
+nxtask_exit: AppBringUp pid=2,TCB=0x5040a980
+
+NuttShell (NSH)
+nsh> nx_start: CPU0: Beginning Idle Loop
+
+nsh> uname -a
+nxposix_spawn_exec: ERROR: exec failed: 2
+NuttX 0.0.0 3ee5f0c36d Jul  2 2024 20:25:48 risc-v ox64
+nsh> hello_rust
+nxtask_activate: hello_rust pid=4,TCB=0x5040b290
+nxsig_tcbdispatch: TCB=0x5040b290 pid=4 signo=0 code=0 value=0 masked=NO
+Hello, Rust!!
+Opening /dev/userleds
+Set LED 0 to 1
+{"nuttxemu":{"gpio29":1}}
+Waiting...
+Set LED 0 to 0
+{"nuttxemu":{"gpio29":0}}
+nxsig_tcbdispatch: TCB=0x5040af80 pid=3 signo=17 code=5 value=0 masked=NO
+nxtask_exit: hello_rust pid=4,TCB=0x5040b290
+nxsig_tcbdispatch: TCB=0x5040af80 pid=3 signo=17 code=5 value=0 masked=NO
+nsh> virtio_console_resize_event
+Terminated
