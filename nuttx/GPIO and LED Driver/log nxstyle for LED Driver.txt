@@ -1,0 +1,10 @@
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ export NUTTX_HOME=~/Desktop/nuttx/tmp/gpio3
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ gcc -o $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/tools/nxstyle.c
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/Kconfig
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/risc-v/bl808/ox64/configs/nsh/defconfig
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/risc-v/bl808/ox64/include/board.h
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/risc-v/bl808/ox64/src/Makefile
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/risc-v/bl808/ox64/src/bl808_appinit.c
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/risc-v/bl808/ox64/src/bl808_autoleds.c
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/risc-v/bl808/ox64/src/bl808_userleds.c
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/gpio3$
