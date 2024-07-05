@@ -1,0 +1,196 @@
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build$ cd nuttx/
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ rustup target add riscv64gc-unknown-none-elf
+info: component 'rust-std' for target 'riscv64gc-unknown-none-elf' is up to date
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ make
+CPP:  /home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/nuttx/boards/risc-v/bl808/ox64/scripts/ld.script-> /home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-buiLD: nuttx
+CP: nuttx.hex
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ riscv-none-elf-objcopy \
+  -O binary \
+  nuttx \
+  nuttx.bin
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ riscv-none-elf-objdump \
+  --syms --source --reloc --demangle --line-numbers --wide \
+  --debugging \
+  nuttx \
+  >nuttx.S \
+  2>&1
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ make -j 8 export
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ pushd ../apps
+~/Desktop/nuttx/tmp/nuttx-rust-build/apps ~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/apps$ ./tools/mkimport.sh -z -x ../nuttx/nuttx-export-*.tar.gz
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/apps$ rustup target add riscv64gc-unknown-none-elf
+info: component 'rust-std' for target 'riscv64gc-unknown-none-elf' is up to date
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/apps$ pushd ../apps/examples/hello_rust
+~/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust ~/Desktop/nuttx/tmp/nuttx-rust-build/apps ~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust$ hello=$(basename ../hello/*hello.o)
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust$  hello_rust=`
+  echo $hello \
+  | sed "s/hello_main.c/hello_rust_main.rs/" \
+  | sed "s/hello.o/hello_rust.o/"
+  `
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust$ rustc \
+  --target riscv64gc-unknown-none-elf \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  hello_rust_main.rs \
+  -o $hello_rust
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust$ popd
+~/Desktop/nuttx/tmp/nuttx-rust-build/apps ~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/apps$ make import
+cc  -O2 -Wall -Wstrict-prototypes -Wshadow -DHAVE_STRTOK_C=1 /home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/import/tools/mkdeps.c -o /home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/import/tools/mkdeps
+cc  -O2 -Wall -Wstrict-prototypes -Wshadow -DHAVE_STRTOK_C=1 /home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/import/tools/incdir.c -o "/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/import/tools/incdir"
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform/dummy
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[2]: Nothing to be done for 'context_wasm'.
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[1]: Nothing to be done for 'register'.
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[1]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[2]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/examples/hello_rust'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/nshlib'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/platform'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/nsh'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/system/readline'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/getprime'
+make[3]: Entering directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[3]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps/testing/ostest'
+make[2]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+make[1]: Leaving directory '/home/rushabhvg/Desktop/nuttx/tmp/nuttx-rust-build/apps'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/apps$ popd
+~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ genromfs \
+  -f initrd \
+  -d ../apps/bin \
+  -V "NuttXBootVol"
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ head -c 65536 /dev/zero >/tmp/nuttx.pad
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ cat nuttx.bin /tmp/nuttx.pad initrd \
+  >Image
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/tmp/nuttx-rust-build/nuttx$ cd ../../../
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx$ ./temu nuttx.cfg
+TinyEMU Emulator for Ox64 BL808 RISC-V SBC
+virtio_console_init
+Patched DCACHE.IALL (Invalidate all Page Table Entries in the D-Cache) at 0x50200bf4
+Patched SYNC.S (Ensure that all Cache Operations are completed) at 0x50200bf8
+Found ECALL (Start System Timer) at 0x5020cc46
+Patched RDTIME (Read System Time) at 0x5020cc4c
+elf_len=0
+virtio_console_resize_event
+ABCnx_start: Entry
+uart_register: Registering /dev/console
+uart_register: Registering /dev/ttyS0
+uart_register: Registering /dev/ttyS1
+uart_register: Registering /dev/ttyS2
+work_start_lowpri: Starting low-priority kernel worker thread(s)
+nxtask_activate: lpwork pid=1,TCB=0x5040a800
+nxtask_activate: AppBringUp pid=2,TCB=0x5040a980
+{"nuttxemu":{"gpio29":0}}
+{"nuttxemu":{"gpio29":0}}
+nx_start_application: Starting init task: /system/bin/init
+nxtask_activate: /system/bin/init pid=3,TCB=0x5040af80
+nxtask_exit: AppBringUp pid=2,TCB=0x5040a980
+
+NuttShell (NSH)
+nsh> nx_start: CPU0: Beginning Idle Loop
+
+nsh> uname -a
+nxposix_spawn_exec: ERROR: exec failed: 2
+NuttX 0.0.0 b8c1ce45e6 Jul  5 2024 18:09:16 risc-v ox64
+nsh> hello_rust
+nxtask_activate: hello_rust pid=4,TCB=0x5040b290
+nxsig_tcbdispatch: TCB=0x5040b290 pid=4 signo=0 code=0 value=0 masked=NO
+Hello, Rust!!
+Opening /dev/userleds
+Set LED 1 to 1
+{"nuttxemu":{"gpio29":1}}
+Waiting...
+Set LED 1 to 0
+{"nuttxemu":{"gpio29":0}}
+nxsig_tcbdispatch: TCB=0x5040af80 pid=3 signo=17 code=5 value=0 masked=NO
+nxtask_exit: hello_rust pid=4,TCB=0x5040b290
+nxsig_tcbdispatch: TCB=0x5040af80 pid=3 signo=17 code=5 value=0 masked=NO
+nsh> Terminated
