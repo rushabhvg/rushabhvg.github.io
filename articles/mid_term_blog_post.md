@@ -1,131 +1,128 @@
 
 Hello! Welcome to my blog about my experience with GSOC 2024 mid terms!
 
-
-
 # Introduction
+I am Rushabh Vipul Gala, pursuing a degree in Computer Science and Engineering at the University of Mumbai, India. My passion lies in tackling real-world challenges and leveraging technology for a positive impact on the world. I have a keen interest in exploring emerging technologies and am honored to be making a meaningful contribution to the Open Source Community through Google Summer of Code (GSoC).
 
-I am Rushabh Vipul Gala, studying Computer Science and Engineering at University of Mumbai, India. I love to solve real world challenges, and want to help for the betterment of the world. I have keen interest in new technologies. And I am thrilled to be able to contribute to the Open Source Community throught Google Summer of Code (GSoC).
+My journey into the realm of Rust programming language began with a curiosity sparked by growing popularity of Rust as a memory-safe language. Despite facing initial difficulties, I gradually immersed myself in Rust, understanding its nuances and exploring its diverse applications. This exploration led me to focus on contributing to Apache NuttX for GSoC 2024, working on the project "Apache NuttX Apps and Rust Integration".
 
-I was curious about the buzz around the Rust language. Rust is gaining popularity as a memory safe language. I tried writing some code in Rust. It was a bit difficult in the begining, and afterwards I slowly started to grasp it. And hence started to look around Rust and its applications.
+The core objective of this project is to establish a foundation for developers to create NuttX applications using the Rust programming language. The synergy between the NuttX ecosystem and my interests for Rust prompted my involvement in this endeavor. Embracing Rust, a globally recognized memory-safe language, excites me as I engage in being a part of the open-source community.
 
-For Google Summer of Code 2024, I am contributing to Apache NuttX on the project "Apache NuttX Apps and Rust Integration". The aim of this project is to prepare a foundation for the developers to write NuttX apps in Rust language. This project particularly interested me because, I could understand the NuttX ecosystem, and loved Rust. I am excited to write code in Rust, a memory safe language gaining attention worldwide. And contribute to the open source community.
-
-In this blog post, I will share my journey through the mid-term phase of GSoC 2024, highlighting the progress made, challenges encountered, and the invaluable lessons learned along the way. I hope this glimpse into my experience will shed light on the details of the project and also inspire fellow developers and enthusiasts to contribute to Open Source and learn new age technologies.
-
-
+In this blog post, I aim to provide insights into my progress during the mid-term phase of GSoC 2024. I will share the milestones achieved, challenges faced, and valuable insights gained along this rewarding journey. My hope is that this narrative will offer a glimpse into the intricate details of the project, inspiring fellow developers and technology enthusiasts to engage with open source initiatives and embrace cutting-edge technologies.
 
 # Project Overview
+My project for Google Summer of Code 2024, in partnership with The Apache Software Foundation, is focused on "Apache NuttX Apps and Rust Integration". The primary objective of the project is to transition some basic NuttX Apps from C to Rust, develop Rust wrapper blocks for Unsafe C code, and provide developers with the tools to code and deploy applications using Rust. This initiative addresses concerns related to Rust Unsafe code blocks and wrapper functions, which are pivotal in enhancing security given the susceptibility of traditional C code to memory-based attacks. And, as NuttX functions as a real-time operating system, prioritizing safety is imperative.
 
-My project for Google Summer of Code 2024 is titled "Apache NuttX Apps and Rust Integration", and I am working in collaboration with The Apache Software Foundation. The main goal of my project is to port the NuttX Apps from C to Rust, write various Rust wrappers for Unsafe C code. This will contribute to help the developers to code and deploy applications in Rust. The project addresses the issues with Rust Unsafe blocks of code and wrapper functions. This is crucial because traditional C code is vulnerable to memory-based attacks. And, NuttX is a real-time operating system, thus, safety is critical.
+By the mid-term evaluation mark, I had aimed to achieve significant milestones, which included establishing C and Rust interoperability, presenting at the NuttX Workshop, migrating the LED Blinky App from C to Rust, deploying LED Blinky on the Ox64 BL808 Single-Board Computer (SBC), and integrating GPIO and LED drivers for the Ox64 BL808 SBC. These milestones signify critical progress points contributing to the overall project completion.
 
-By the mid-term evaluation, I aimed to achieve milestones such as implementing C and Rust interoperatibility, presenting at NuttX Workshop, porting the LED Blinky App from C to Rust, deploying LED Blinky on Ox64 BL808 SBC, and adding GPIO and LED drivers for Ox64 BL808 SBC. These milestones are critical as they mark key progress points towards the overall completion of the project.
+Key tasks completed for the mid-term evaluation phase are as follows:
+- Implementation Embedded Rust
+- C Interoperability with Embedded Rust (incorporating no_std file I/O and ioctl)
+- Migration of the LED Blinky App from C to Rust
+- Testing Rust Blinky on the Ox64 Emulator
+- Delivering a presentation at the NuttX Workshop
+- Demonstrating the Ox64 SBC & Ox64 Emulator at the NuttX Workshop
+- Flashing the Ox64 SBC
+- Upstreaming the GPIO Driver (in C) to the NuttX Kernel for the Ox64 SBC
+- Introducing the LED Driver (in C) to the NuttX Kernel for the Ox64 SBC
 
-The tasks completed for the mid-term evaluations are:
-- Implement Embedded Rust
-- C Interoperability with Embedded Rust (no_std file I/O and ioctl)
-- Port the LED Blinky App from C to Rust
-- Test Rust Blinky on Ox64 Emulator
-- Presentation at NuttX Workshop
-- Demo Ox64 Emulator at NuttX Workshop
-- Flash Ox64 SBC
-- Upstream the GPIO Driver (in C) to NuttX Kernel for Ox64 SBC
-- Upstream the LED Driver (in C) to NuttX Kernel for Ox64 SBC
-
-During the first phase of GSoC 2024, I have successfully achieved C and Rust interoperability, and implemented LED Blinky in Rust. This includes implementing file and IOCTL commands in Rust, and converting the LED Blinky App from C to Rust.
-
-
+During the initial phase of GSoC 2024, I have successfully achieved C and Rust interoperability, along with implementing the LED Blinky functionality in Rust. This involved incorporating file and IOCTL commands in Rust and transitioning the LED Blinky App from C to Rust, marking significant progress.
 
 # Lessons Learnt and Mentorship
+During the development process, I had encountered various challenges, with one of the major obstacle being related to the usage of Cargo, the standard dependency management and building tool for Rust projects. In the case of NuttX development, the precise control required by the NuttX system did not align well with Cargo's automatic dependency handling. To address this, my mentor, Mr. Lup Yuen Lee, and I made the decision to manually handle all dependencies by checking and downloading each one of them, linking them, and compiling and building them together.
 
-Throughout the development process, I encountered several challenges, one of the major challenges I faced was the Cargo issue. Typically any Rust project uses Cargo for dependency management and builing the files. NuttX developers require careful System Control, and Cargo's automatic dependency handling might not match up with the strict needs of NuttX. To overcome this, we (myself, and my mentor Mr. Lup Yuen Lee) decided to handle eveything manually, i.e. checking and downloading every dependency, linking these dependencies, compiling, and building them together.
+These challenges and hurdles provided valuable learning opportunities, allowing me to significantly improve my proficiency in Rust, C, and programming in general. I have gained experience in downloading and building external libraries and compiling a Rust application in a real-world scenario. Additionally, I have learnt the importance of proper code documentation and enhanced various non-technical skills, such as presentation skills, task scheduling, teamwork, communication, and problem-solving in a collaborative coding environment. I have also discovered the concept of code ownership, as working closely with my mentor and engaging with the open-source community improved my ability to effectively communicate technical concepts and collaborate efficiently.
 
-Thanks to all this challeges and hurdles, I was able to enhance my proficiency in Rust, C, and programming in general. I have learnt how to download and build the external libraries, compile a Rust application in a real-world situation. I learnt how to document the code, and improved various non-technical skills like Presentation, Pacing, Teamwork, Communication, and how to tackle issues while coding in collaboration. I also learnt about an interesting concept - Code Ownership. Working closely with my mentor and engaging with the open-source community has significantly improved my ability to communicate technical concepts effectively and collaborate efficiently.
+I am deeply grateful for the tremendous support and guidance provided by my mentor, Mr. Lup Yuen Lee, who is a member of the Apache NuttX PMC (Project Management Committee) and formerly a lecturer. His prior experience as a lecturer allowed him to assist me, as a final-year student, with various tasks that may have seemed straightforward for an experienced developer but proved to be more challenging for me. He created a step-by-step guide on how to build and run NuttX when I was initially unable to even compile it. Additionally, when I encountered difficulties in flashing the Ox64 BL808 board, he promptly provided assistance.
 
-I received a lot of help from my mentor, Mr. Lup Yuen Lee. He is a member of Apache NuttX PMC (Project Management Committee). He was a lecturer before joining the Apache NuttX PMC. Through his experience as a lecturer, he has helped me (as a final-year student) in various tasks which might be facile (for an experienced developer), and I sometimes found them a bit sophisticated. His guidance and advice have helped me a lot. In the begining, I was unable to even compile NuttX, he made a step-by step guide on how to build and run NuttX, which actually helped me a lot. Once, I was facing some difficulty in flashing the Ox64 BL808 board, he promptly helped me to flash it.
+The NuttX community has also been incredibly supportive. With the help of my mentor and other community members, I was able to resolve many NuttX-related issues. The developers within the community are welcoming to newcomers and offer prompt assistance.
 
-The NuttX Community is too kind. I was able to solve many of the NuttX-related issues with the help of my mentor, and the community. The developers are friendly to newcomers, helping them promptly.
+Overall, this mentorship experience and collaboration with the NuttX community have been tremendously beneficial, providing me with valuable skills, knowledge, and the support needed to overcome challenges and successfully contribute to the project.
 
+# Mid-Term Experience
+I have conducted testing of the said implemented features to detect and resolve any potential issues. Furthermore, I have performed a thorough review of my codebase, ensuring strict compliance with coding standards and the best practices. Additionally, I have utilized nxstyle, an automatic code style checking tool, to identify and rectify any deviations from coding standards set by NuttX.
 
+During the mid-term evaluation, I have received constructive feedback from my mentor regarding the successful implementation of features and improvements. He has acknowledged my efforts and expressed satisfaction with the code that I have delivered. I had received invaluable feedback on areas that require optimization and refinement, particularly in terms of my working speed. While my mentor praised my work pace, he suggested that I occasionally need to increase or decrease my speed depending on the task at hand. Based on this feedback, we have mutually reallocated work to match the GSOC timeline.
 
-# Mid-Term Evaluation Experience
-
-I conducted rigorous testing of the implemented features to identify and resolve any potential issues. Additionally, I reviewed my codebase to ensure adherence to coding standards and best practices. I have also ran a automatic code style checking tool, nxstyle, to check and resolve any conflicts with coding standards of NuttX.
-
-During the mid-term evaluation, I received positive feedback from my mentor regarding the successful implementation of features and improvements. He appreciated my work and he was satisfied with my work and the code that I have delivered.
-
-I also received valuable feedback on areas where further optimization and refinement are needed, particularly in my working speed, where my mentor said that I was sometimes progressing too quickly and sometimes I was a bit slower. Overall my speed was good, I just need to speed-up sometimes, and slow-down sometimes. Because of the advice and feedback recieved, we have mututally re-distributed the work/deliverables to match the GSOC timeline.
-
-Moving forward, my primary goal is to create and document the Rust Wrappers. This will help in writing faster and safer NuttX Apps. Also, expand the support for NuttX Apps in Rust to RISC-V 32-bit, RISC-V 64-bit, Arm32 and Arm64 systems. Thus achieving our initial goal of preparing a foundation for other developers to develop and code NuttX Apps in Rust. Beyond GSoC, I aim to continue contributing to the NuttX project as an active member of the open-source community. I plan to collaborate with my mentor to develop more NuttX Apps in Rust, and help other developers worldwide.
-
-
+Moving forward, I have prioritize developing and documenting the Rust wrapper blocks to accelerate the development of faster and safer NuttX Apps. Additionally, I have aim to expand NuttX support in Rust to include RISC-V 32-bit, RISC-V 64-bit, Arm32, and Arm64 systems. This will lay the groundwork for other developers to code NuttX Apps in Rust. Beyond the scope of GSoC, I endeavor to continue contributing to the NuttX project as an active member of the open-source community. I plan to work alongside my mentor to create more NuttX Apps in Rust and aid developers worldwide.
 
 # Personal Reflections
+Throughout the Google Summer of Code 2024 (GSoC 2024), I have gained valuable insights into the significance of modular design and maintaining clean coding practices. My experience in developing the LED Blinky App has deepened my understanding of the Rust and C programming languages, embedded systems functionality, and the intricacies of interfacing Rust with C and vice versa. I have also grasped the importance of breaking down tasks into manageable components and executing them methodically, step by step.
 
-Throughout GSoC 2024, I've learned the importance of modular design and clean coding practices. Implementing LED Blinky App taught me more about Rust and C, how embedded systems work, how to call Rust from C, and C from Rust. I have the learnt the importance of dividng the work in smaller parts and completing them in an orderly manner, step by step.
+Collaborating closely with my mentor and actively participating in the community has significantly broadened my perspective on effective teamwork. I have become proficient in utilizing collaborative tools such as Git and Discord for streamlined communication and version control. Personally, GSoC has bolstered my confidence in tackling intricate technical challenges and embracing constructive feedback, fostering a continuous journey of learning and self-improvement.
 
-Collaborating with my mentor and engaging with the community has broadened my perspective on teamwork. I've learned to leverage collaborative tools like Git and Discord for effective communication and version control. Personally, GSoC has boosted my confidence in tackling complex technical challenges and handling feedback constructively. It's been a journey of continuous learning and self-improvement.
-
-One of my proudest acheivement is the LED Blinky App in Rust. I faced many difficulties in handling the File I/O and IOCTL operations in Rust. With my mentor's help, I was able to implement these operations, which in turn helped me write the app. I was having some difficulty handling strings and printing them to the console. My findings about the different data types of strings, characters, and pointers in Rust and C, helped me to understand the different ways of calling the console output functions.
-
-
-
+Among my most notable achievements during this period is the successful development of the LED Blinky App using Rust. Overcoming challenges, particularly in managing File I/O and IOCTL operations within Rust, was a significant learning curve. With invaluable guidance from my mentor, I successfully implemented these operations, which were pivotal in the app's development. I encountered specific difficulties in handling strings and their output to the console. Through diligent research, I gained insights into Rust's and C's distinct data types for strings, characters, and pointers, enhancing my ability to effectively utilize console output functions.
 
 Some questions asked by my mentor, Mr Lup Yuen Lee:
 
 _(a) We had a very interesting NuttX International Workshop. What do you think about the NuttX Project and the NuttX Community?_
 
-The NuttX International Workshop was interesting indeed and I came to know and learn a lot about the NuttX Community. I was excited to communicate and talk with other NuttX Developers around the world. Their research and projects left me surprised. I re-learnt how big and amazing the NuttX project actually is. I loved the NuttX workshop and would love to attend more such workshops in the future.
+The NuttX International Workshop was indeed captivating, providing me with a profound understanding of the NuttX Project and its vibrant community. Engaging with NuttX developers globally was both enlightening and inspiring. I was particularly impressed by the diverse research initiatives and projects showcased during the workshop. This experience reaffirmed my appreciation for the breadth and significance of the NuttX project. I thoroughly enjoyed the workshop and eagerly anticipate participating in future events to further enrich my knowledge and contribute to this remarkable community.
 
 _(b) How was your experience presenting at the NuttX Workshop? Do you think the experience might be helpful for your future career?_
 
-Honestly, this was the first time I had ever presented anything. I was nervous and excited to present in an international workshop. Through my presentation, I was able to explain the community, how we are going to port NuttX Apps from C to Rust. Considering this was my first presentation, I feel it was a good one. And after watching my presentation a few more times, I was able to find the some areas of improvement like, the wordings and pace of speaking. This presentation has boosted my self-confidence to give more presentaions.
-And connecting to many experts, has surely helped me progress in my career. Thanks. 
+Presenting at the NuttX Workshop was a significant milestone for me, as it marked my inaugural experience in public speaking. Naturally, I approached it with a mix of nervousness and excitement, given the international audience. During my presentation, I effectively conveyed insights into our initiative to migrate NuttX Apps from C to Rust, which was well-received by attendees.
+
+Reflecting on this experience, I believe my presentation was a solid debut effort. Upon reviewing recordings, I identified areas for improvement in terms of clarity in wording and pacing of delivery, which I'm eager to refine for future engagements. This opportunity has notably bolstered my confidence in public speaking and underscored the value of connecting with industry experts, which I believe will positively influence my career trajectory.
+
+Overall, presenting at the NuttX Workshop was not only a valuable learning experience but also a pivotal step in my professional development.
 
 _(c) How do you feel about your First Contribution to NuttX Kernel? What were the challenges that you faced?_
 
-I was feeling very nervous while making my first contribution to NuttX Kernel. As the NuttX Kernel is the core of the NuttX project, I was scared if I would be able to code according to the NuttX standards, and still be able to contribute. We had an issue with another BL808 Driver, and because of it we weren't able to build the LED Blinky app. I was sad, and a bit stressed. After it was resolved, we were able to build the LED Blinky app again. After getting a lot of suggestions from my mentor, I was confident in the code I have written. I was excited to submit my first PR to the NuttX Kernel mainline. I was a lot happier once the pull request got merged.
+I approached my first contribution to the NuttX Kernel with a mixture of excitement and nervousness. The NuttX Kernel forms the cornerstone of the entire NuttX project, so ensuring my code met its rigorous standards was paramount. Initially, I faced challenges related to a BL808 Driver issue, which temporarily halted progress on the LED Blinky app development. This setback was disappointing and created some stress.
+
+Fortunately, with guidance and feedback from my mentor, I navigated through these obstacles and resolved the issue. This experience not only strengthened my coding skills but also instilled confidence in my ability to contribute effectively. Submitting my first pull request to the NuttX Kernel was a moment of great satisfaction and validation. Witnessing its successful merge was a testament to my growth and dedication to the project.
+
+Overall, while the journey had its share of challenges, overcoming them and seeing tangible results has been immensely rewarding and motivating for me.
 
 _(d) Tell us a bit about the Rust Blinky App that you have created for NuttX. What are your impressions of Rust so far?_
 
-The Rust Blinky App is a simple implementation of LED Blinky App, where the user controls an LED through the application. Instead of C, the code was written in Rust for NuttX. The LED is turned on or off from the command line. As we know Rust is a memory safe language, it sometimes gets quite tricky to write the code for handling characters, strings and pointers. Anyways, once we handle these data types carefully, Rust is good. Its memory safety and zero cost abstraction are very helpful while writing performance-critical code.
+The Rust Blinky App I developed for NuttX is a straightforward application that allows users to control an LED via command-line inputs. Unlike traditional implementations in C, this app leverages Rust's capabilities within the NuttX environment. Users can toggle the LED on or off, demonstrating basic functionality using Rust's syntax and features.
+
+My experience with Rust has been positive overall. Rust's focus on memory safety is particularly noteworthy, although it does introduce complexities when handling data types such as characters, strings, and pointers. However, these challenges are outweighed by Rust's benefits, especially its zero-cost abstractions and suitability for writing efficient, performance-critical code.
+
+In summary, Rust has proven to be a valuable tool for developing embedded applications like the Blinky App, offering a robust framework within NuttX while ensuring reliability and performance.
 
 _(e) What were the challenges you faced while using the Ox64 SBC? Is there anything that NuttX Project (or PINE64) could do better, to make Ox64 programming easier for learners?_
 
-I had many challenges while using the Ox64 SBC. I faced difficulties setting up and flashing NuttX on it. Connecting the Ox64 SBC to laptop was also a bit of a complex task for me. However, I would say that all of these hurdles were just diffcult for me because of my lack of knowledge, and once I got the hang of Ox64 SBC, I was able to connect, set up, and flash NuttX easily. I would just say, more detailed documentation is good for absoulte beginners like me. Everything else works fine because of the NuttX Project, and PINE64's continuous support.
+Using the Ox64 SBC presented several challenges initially. I encountered difficulties in setting up and flashing NuttX on the device, as well as in establishing a connection between the Ox64 SBC and my laptop. These tasks posed complexities that stemmed largely from my limited experience with the hardware. However, with perseverance and learning, I eventually gained proficiency in these areas, enabling smoother operation of the Ox64 SBC.
+
+To enhance the experience for beginners like myself, I believe more comprehensive documentation would be beneficial. Clearer step-by-step guides and troubleshooting tips specific to the Ox64 SBC would greatly assist newcomers in overcoming initial setup hurdles more efficiently.
 
 _(f) How are you using the Ox64 Emulator for GSoC? Do you think Ox64 Emulator is a good substitute if Ox64 SBC is unavailable?_
 
-I have set up Ox64 Emulator with the help of TEMU (the tiny emulator). It perfectly does the work. I find it helpful and useful. Yes, I guess Ox64 Emulator is a good substitute if Ox64 SBC is unavailable. We should keep in mind that an emulator is not same the physical hardware. Hence for the deployment and production, we should thoroughly test the program on both: Emulator and Physical Hardware. Because sometimes the same piece of code might not work on the hardware device, even if it works on the emulator.
+In my GSoC project, I've utilized the Ox64 Emulator alongside TEMU, which has proven to be a reliable tool for simulating the Ox64 environment. This emulator effectively mirrors the functionalities of the physical Ox64 SBC, allowing me to test and develop NuttX applications without needing access to the actual hardware.
+
+While the Ox64 Emulator serves as a commendable substitute when physical access to the SBC is unavailable, it's crucial to acknowledge that emulation differs from real-world deployment. Therefore, rigorous testing on both the emulator and the physical Ox64 SBC remains essential. Variations in hardware behavior can occasionally lead to discrepancies, where code that functions correctly in emulation may encounter issues on the actual device.
+
+In summary, leveraging the Ox64 Emulator has facilitated significant progress in my project, providing a practical workaround for development and testing. However, validating applications on physical hardware remains indispensable for ensuring robust performance in real-world scenarios.
 
 _(g) We had some Power Outage problems during GSoC. How did you continue working in spite of the outage?_
 
-Yeah, I had power outage during the starting phase. I was quite surprised because of we have almost zero outages. It was challenging as the power outages coincided with my preparation for NuttX Workshop. To deal with it, I used to sleep/relax while the power was gone. Sometimes I studied more about Rust and Embedded System on my mobile phone. Once the power was back on, I used to work on my laptop as long as the battery lasts, continously saving the work, just in case the laptop battery dies and the power goes. And thanks to my mentor, Mr. Lee, who helped and coordinated with me, I was able to handle the power outages and still be able to contribute to the NuttX Project. 
+Dealing with power outages during the initial phase of GSoC posed unexpected challenges, particularly during critical preparation for the NuttX Workshop. To manage these interruptions, I adopted a proactive approach. During downtime, I utilized the opportunity to rest and recharge, occasionally using my mobile phone to study Rust and embedded systems. Once power was restored, I maximized laptop usage, ensuring continuous progress by diligently saving my work to preempt potential battery drain. Throughout this period, the support and coordination from my mentor, Mr. Lee, were instrumental in navigating these challenges and maintaining productivity on the NuttX Project.
 
 _(h) Is there anything that NuttX Project can help, so new devs can get onboard NuttX quicker?_
 
-NuttX Project is very big and complex to understand and learn. And, I would just say that, a beginner/starter's guide is good for the new devs who want to get onboard NuttX. I think a beginner's guide should just cover the high-level structure of the Project, for example, which functionality is inside where, the current issues and how they are handled. Even without this guide, the devs can get onboard NuttX Project because of the versatile and friendly community.
+The NuttX Project, while rich with opportunities, can present a steep learning curve for newcomers due to its complexity. To facilitate a smoother onboarding process, I recommend enhancing beginner resources. A structured beginner's guide outlining the project's high-level structure, core functionalities, and common issue resolutions would significantly benefit new developers. Clear documentation and accessible learning materials would empower aspiring contributors to engage more effectively with the NuttX community and accelerate their learning curve.
 
 _(i) Would you recommend GSoC and NuttX to your fellow students?_ 
 
-Yes, I would highly recommend my fellow students to join GSoC and NuttX. I am keen to promote open-source contribution, helping my fellow students learn about coding and programming. I will guide them towards the open-source world through various programs like Google Summer of Code and other such programmes. GSoC and NuttX Project has helped boost my self-confidence, showcasing my coding capabilites to the world.
-
-
+Absolutely, I enthusiastically endorse GSoC and participation in the NuttX Project to my peers and fellow students. These initiatives not only provide invaluable hands-on experience in open-source development but also foster personal growth and skill enhancement in coding and programming. I am committed to encouraging others to explore these opportunities, guiding them towards impactful contributions in the open-source community while showcasing their talents on a global stage.
 
 # Acknowledgments
 
-I would like to thank everyone who has helped and supported me during the GSoC period.
+I am deeply thankful to Mahadev, Bhagwan Vishnu, and all the gods and goddesses for blessing me with this opportunity and guiding me through this transformative experience.
 
-I am also grateful to Mahadev, Bhagwan Vishnu, and all the gods and goddesses for granting me this opportunity, and guiding me through this journey.
+A special appreciation goes to Mr. Lup Yuen Lee for his unwavering support, patience, and invaluable guidance throughout the project. His expertise in embedded systems has been instrumental in shaping my skills and understanding.
 
-I am incredibly grateful to Mr. Lup Yuen Lee for his continuous support, patience and invaluable guidance throughout the project. His expertise and encouragement were instrumental in shaping my understanding and my skills in embedded systems.
+I am immensely grateful to the Apache Software Foundation for providing me with the opportunity to participate in GSoC. The resources and supportive community at Apache were indispensable in achieving my goals and personal growth as a developer.
 
-A special thank you to the Apache Software Foundation for providing me with this amazing opportunity to participate in GSoC. The resources and community at the Apache Software Foundation were essential in helping me achieve my goals and my growth as a developer.
+I am grateful to PINE64 for sponsoring me with 2 Ox64 Single Board Computers featuring the Bouffalo Lab BL808 RISC-V SoC, along with their associated setup tools. These resources were instrumental in testing my code and applications on physical hardware, significantly enhancing my development experience.
 
-I extend my thanks to Alan Carvalho de Assis, Tomasz Cedro, Xiang Xiao, Alin Jerpelea, Saurav Pal and others for their assistance and encouragement during challenging phases of the project. Their feedback and advice significantly contributed to the success of the project.
+I extend my sincere thanks to Alan Carvalho de Assis, Tomasz Cedro, Xiang Xiao, Alin Jerpelea, Saurav Pal, and others for their assistance and encouragement during challenging phases of the project. Their feedback and advice were crucial to the project's success.
 
-I would also like to thank my family and friends for their unwavering support and understanding throughout this journey.
+My heartfelt appreciation also goes to my family and friends for their unwavering support and understanding throughout this journey.
 
-Finally I am grateful to Google, Stephanie and Lucila (GSoC Admins) for organizing the 20th Google Summer of Code, and for providing a platform for students like me to learn and contribute to open-source projects.
+Finally, I would like to express my gratitude to Google, Stephanie and Lucila (GSoC Admins) for organizing the 20th Google Summer of Code and for providing a platform that enabled students like myself to learn and contribute to open-source projects.
 
-Thank you once again to everyone who made this experience enriching and unforgettable.
+Thank you once again to everyone who has made this experience enriching and unforgettable.
