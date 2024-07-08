@@ -7,9 +7,9 @@ Hello! Welcome to my blog about my experience with GSOC 2024 mid terms!
 
 I am Rushabh Vipul Gala, studying Computer Science and Engineering at University of Mumbai, India. I love to solve real world challenges, and want to help for the betterment of the world. I have keen interest in new technologies. And I am thrilled to be able to contribute to the Open Source Community throught Google Summer of Code (GSoC).
 
-I was curious about the buzz the around the Rust language. Rust is gaining popularity as a memory safe language. I tried writing some code in Rust. It was a bit difficult in the begining, and afterwards I slowly started to grasp it. And hence started to look around Rust and its applications.
+I was curious about the buzz around the Rust language. Rust is gaining popularity as a memory safe language. I tried writing some code in Rust. It was a bit difficult in the begining, and afterwards I slowly started to grasp it. And hence started to look around Rust and its applications.
 
-For Google Summer of Code 2024, I am contributing to the Apache's NuttX on the project "Apache NuttX Apps and Rust Integration". The aim of this project is to prepare a foundation for the developers to write NuttX apps in Rust language. This project particularly interested me because, I could understand the NuttX ecosystem, and loved Rust. I am excited to write code in Rust, a memory safe language gaining attention worldwide. And contribute to the open source community.
+For Google Summer of Code 2024, I am contributing to Apache NuttX on the project "Apache NuttX Apps and Rust Integration". The aim of this project is to prepare a foundation for the developers to write NuttX apps in Rust language. This project particularly interested me because, I could understand the NuttX ecosystem, and loved Rust. I am excited to write code in Rust, a memory safe language gaining attention worldwide. And contribute to the open source community.
 
 In this blog post, I will share my journey through the mid-term phase of GSoC 2024, highlighting the progress made, challenges encountered, and the invaluable lessons learned along the way. I hope this glimpse into my experience will shed light on the details of the project and also inspire fellow developers and enthusiasts to contribute to Open Source and learn new age technologies.
 
