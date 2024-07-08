@@ -72,7 +72,7 @@ One of my proudest achievements is the LED Blinky App in Rust. I faced many diff
 
 
 
-Some questions asked by my mentor, Mr Lup Yuen Lee:
+# Q&A session with my mentor, Mr Lup Yuen Lee:
 
 _(a) We had a very interesting NuttX International Workshop. What do you think about the NuttX Project and the NuttX Community?_
 
