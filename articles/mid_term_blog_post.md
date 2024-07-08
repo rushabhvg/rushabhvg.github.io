@@ -53,8 +53,7 @@ Collaborating closely with my mentor and actively participating in the community
 
 Among my most notable achievements during this period is the successful development of the LED Blinky App using Rust. Overcoming challenges, particularly in managing File I/O and IOCTL operations within Rust, was a significant learning curve. With invaluable guidance from my mentor, I successfully implemented these operations, which were pivotal in the app's development. I encountered specific difficulties in handling strings and their output to the console. Through diligent research, I gained insights into Rust's and C's distinct data types for strings, characters, and pointers, enhancing my ability to effectively utilize console output functions.
 
-Some questions asked by my mentor, Mr Lup Yuen Lee:
-
+# Some questions asked by my mentor, Mr Lup Yuen Lee:
 _(a) We had a very interesting NuttX International Workshop. What do you think about the NuttX Project and the NuttX Community?_
 
 The NuttX International Workshop was indeed captivating, providing me with a profound understanding of the NuttX Project and its vibrant community. Engaging with NuttX developers globally was both enlightening and inspiring. I was particularly impressed by the diverse research initiatives and projects showcased during the workshop. This experience reaffirmed my appreciation for the breadth and significance of the NuttX project. I thoroughly enjoyed the workshop and eagerly anticipate participating in future events to further enrich my knowledge and contribute to this remarkable community.
