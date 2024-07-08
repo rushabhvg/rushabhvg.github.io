@@ -5,7 +5,7 @@ Hello! Welcome to my blog about my experience with GSOC 2024 mid terms!
 
 # Introduction
 
-I am Rushabh Vipul Gala, studying Computer Science and Engineering at University of Mumbai, India. I love to solve real world challenges, and want to help for the betterment of the world. I have keen interest in new technologies. And I am thrilled to be able to contribute to the Open Source Community throught Google Summer of Code (GSoC).
+I am Rushabh Vipul Gala, studying Computer Science and Engineering at University of Mumbai, India. I love to solve real world challenges, and want to help for the betterment of the world. I have keen interest in new technologies. And I am thrilled to be able to contribute to the Open Source Community through Google Summer of Code (GSoC).
 
 I was curious about the buzz around the Rust language. Rust is gaining popularity as a memory safe language. I tried writing some code in Rust. It was a bit difficult in the begining, and afterwards I slowly started to grasp it. And hence started to look around Rust and its applications.
 
@@ -121,6 +121,8 @@ I am also grateful to Mahadev, Bhagwan Vishnu, and all the gods and goddesses fo
 I am incredibly grateful to Mr. Lup Yuen Lee for his continuous support, patience and invaluable guidance throughout the project. His expertise and encouragement were instrumental in shaping my understanding and my skills in embedded systems.
 
 A special thank you to the Apache Software Foundation for providing me with this amazing opportunity to participate in GSoC. The resources and community at the Apache Software Foundation were essential in helping me achieve my goals and my growth as a developer.
+
+I am also grateful to PINE64 for sponsoring me with 2 Ox64 Single Board Computers featuring the Bouffalo Lab BL808 RISC-V SoC, along with their associated setup tools. These resources were necessary in testing my code and applications on physical hardware.
 
 I extend my thanks to Alan Carvalho de Assis, Tomasz Cedro, Xiang Xiao, Alin Jerpelea, Saurav Pal and others for their assistance and encouragement during challenging phases of the project. Their feedback and advice significantly contributed to the success of the project.
 
