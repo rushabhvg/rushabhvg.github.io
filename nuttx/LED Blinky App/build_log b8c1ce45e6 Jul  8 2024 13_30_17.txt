@@ -1,0 +1,18 @@
+nsh> uname -a
+nxposix_spawn_exec: ERROR: exec failed: 2
+NuttX 0.0.0 b8c1ce45e6 Jul  8 2024 13:30:17 risc-v ox64
+nsh> hello_rust
+nxtask_activate: hello_rust pid=4,TCB=0x5040b290
+nxsig_tcbdispatch: TCB=0x5040b290 pid=4 signo=0 code=0 value=0 masked=NO
+Hello, Rust!!
+Opening /dev/userleds
+Set LED 1 to 1
+{"nuttxemu":{"gpio29":1}}
+Sleeping...
+Set LED 1 to 0
+{"nuttxemu":{"gpio29":0}}
+nxsig_tcbdispatch: TCB=0x5040af80 pid=3 signo=17 code=5 value=0 masked=NO
+nxtask_exit: hello_rust pid=4,TCB=0x5040b290
+nxsig_tcbdispatch: TCB=0x5040af80 pid=3 signo=17 code=5 value=0 masked=NO
+nsh> virtio_console_resize_event
+Terminated
