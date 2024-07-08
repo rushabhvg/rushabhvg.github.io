@@ -5,7 +5,7 @@ Hello! Welcome to my blog about my experience with GSOC 2024 mid terms!
 
 # Introduction
 
-I am Rushabh Vipul Gala, studying Computer Science and Engineering at University of Mumbai, India. I love to solve real world challenges, and want to help for the betterment of the world. I have keen interest in new technologies. And I am thrilled to be able to contribute to the Open Source Community throught Google Summer of Code (GSoC).
+I am Rushabh Vipul Gala, studying Computer Science and Engineering at University of Mumbai, India. I love to solve real world challenges, and want to help for the betterment of the world. I have keen interest in new technologies. And I am thrilled to be able to contribute to the Open Source Community through Google Summer of Code (GSoC).
 
 I was curious about the buzz around the Rust language. Rust is gaining popularity as a memory safe language. I tried writing some code in Rust. It was a bit difficult in the begining, and afterwards I slowly started to grasp it. And hence started to look around Rust and its applications.
 
