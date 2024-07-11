@@ -1,0 +1,6 @@
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx$ export NUTTX_HOME=~/Desktop/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx$ gcc -o $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/tools/nxstyle.c
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/risc-v/qemu-rv/rv-virt/src/qemu_rv_userleds.c
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/risc-v/qemu-rv/rv-virt/src/qemu_rv_appinit.c
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx$ $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/boards/risc-v/qemu-rv/rv-virt/include/board.h
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx$ 
