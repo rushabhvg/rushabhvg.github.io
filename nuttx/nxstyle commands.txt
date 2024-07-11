@@ -1,0 +1,5 @@
+export NUTTX_HOME=~/Desktop/nuttx
+
+gcc -o $NUTTX_HOME/nxstyle $NUTTX_HOME/nuttx/tools/nxstyle.c
+
+$NUTTX_HOME/nxstyle $NUTTX_HOME/path/to/file/file_name.extension
