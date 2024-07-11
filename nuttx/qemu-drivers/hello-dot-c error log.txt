@@ -1,0 +1,417 @@
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ tools/configure.sh rv-virt:nsh64
+  Copy files
+  Select CONFIG_HOST_LINUX=y
+  Refreshing...
+CP: arch/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/arch/dummy/dummy_kconfig
+CP: boards/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/boards/dummy/dummy_kconfig
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+LN: include/arch to arch/risc-v/include
+LN: include/arch/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/include
+LN: drivers/platform to /home/rushabhvg/Desktop/nuttx/nuttx/drivers/dummy
+LN: include/arch/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/include/qemu-rv
+LN: arch/risc-v/src/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/qemu-rv
+LN: arch/risc-v/src/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/src
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/audioutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/benchmarks
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/boot
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/canutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/crypto
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/database
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/examples/mcuboot
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/examples
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/fsutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/games
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/graphics
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/industry
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/inertial
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/interpreters/luamodules
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/interpreters
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/logging
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/lte
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/math
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/mlearning
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/netutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/sdr
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/system
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/testing
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/wireless/bluetooth
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/wireless/ieee802154
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/wireless
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps
+Loaded configuration '.config'
+Configuration saved to '.config'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ make menuconfig
+CP: arch/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/arch/dummy/dummy_kconfig
+CP: boards/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/boards/dummy/dummy_kconfig
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+LN: include/arch to arch/risc-v/include
+LN: include/arch/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/include
+LN: drivers/platform to /home/rushabhvg/Desktop/nuttx/nuttx/drivers/dummy
+LN: include/arch/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/include/qemu-rv
+LN: arch/risc-v/src/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/qemu-rv
+LN: arch/risc-v/src/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/src
+
+
+*** End of the configuration.
+*** Execute 'make' to start the build or try 'make help'.
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ make
+Create version.h
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+Register: hello
+Register: nsh
+Register: sh
+Register: getprime
+Register: ostest
+Archive:  fdt/dtc.zip
+039a99414e778332d8f9c04cbd3072e1dcc62798
+   creating: fdt/dtc-1.7.0/
+  inflating: fdt/dtc-1.7.0/.cirrus.yml  
+  inflating: fdt/dtc-1.7.0/.editorconfig  
+  inflating: fdt/dtc-1.7.0/.gitignore  
+  inflating: fdt/dtc-1.7.0/.travis.yml  
+  inflating: fdt/dtc-1.7.0/BSD-2-Clause  
+  inflating: fdt/dtc-1.7.0/CONTRIBUTING.md  
+   creating: fdt/dtc-1.7.0/Documentation/
+  inflating: fdt/dtc-1.7.0/Documentation/dt-object-internal.txt  
+  inflating: fdt/dtc-1.7.0/Documentation/dtc-paper.bib  
+  inflating: fdt/dtc-1.7.0/Documentation/dtc-paper.tex  
+  inflating: fdt/dtc-1.7.0/Documentation/dts-format.txt  
+  inflating: fdt/dtc-1.7.0/Documentation/manual.txt  
+  inflating: fdt/dtc-1.7.0/GPL       
+  inflating: fdt/dtc-1.7.0/MANIFEST.in  
+  inflating: fdt/dtc-1.7.0/Makefile  
+  inflating: fdt/dtc-1.7.0/Makefile.convert-dtsv0  
+  inflating: fdt/dtc-1.7.0/Makefile.dtc  
+  inflating: fdt/dtc-1.7.0/Makefile.utils  
+  inflating: fdt/dtc-1.7.0/README.license  
+  inflating: fdt/dtc-1.7.0/README.md  
+  inflating: fdt/dtc-1.7.0/TODO      
+  inflating: fdt/dtc-1.7.0/checks.c  
+  inflating: fdt/dtc-1.7.0/convert-dtsv0-lexer.l  
+  inflating: fdt/dtc-1.7.0/data.c    
+  inflating: fdt/dtc-1.7.0/dtc-lexer.l  
+  inflating: fdt/dtc-1.7.0/dtc-parser.y  
+  inflating: fdt/dtc-1.7.0/dtc.c     
+  inflating: fdt/dtc-1.7.0/dtc.h     
+  inflating: fdt/dtc-1.7.0/dtdiff    
+  inflating: fdt/dtc-1.7.0/fdtdump.c  
+  inflating: fdt/dtc-1.7.0/fdtget.c  
+  inflating: fdt/dtc-1.7.0/fdtoverlay.c  
+  inflating: fdt/dtc-1.7.0/fdtput.c  
+  inflating: fdt/dtc-1.7.0/flattree.c  
+  inflating: fdt/dtc-1.7.0/fstree.c  
+   creating: fdt/dtc-1.7.0/libfdt/
+ extracting: fdt/dtc-1.7.0/libfdt/.gitignore  
+  inflating: fdt/dtc-1.7.0/libfdt/Makefile.libfdt  
+  inflating: fdt/dtc-1.7.0/libfdt/TODO  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt.c  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt.h  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt_addresses.c  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt_check.c  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt_empty_tree.c  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt_overlay.c  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt_ro.c  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt_rw.c  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt_strerror.c  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt_sw.c  
+  inflating: fdt/dtc-1.7.0/libfdt/fdt_wip.c  
+  inflating: fdt/dtc-1.7.0/libfdt/libfdt.h  
+  inflating: fdt/dtc-1.7.0/libfdt/libfdt_env.h  
+  inflating: fdt/dtc-1.7.0/libfdt/libfdt_internal.h  
+  inflating: fdt/dtc-1.7.0/libfdt/meson.build  
+  inflating: fdt/dtc-1.7.0/libfdt/version.lds  
+  inflating: fdt/dtc-1.7.0/livetree.c  
+  inflating: fdt/dtc-1.7.0/meson.build  
+  inflating: fdt/dtc-1.7.0/meson_options.txt  
+   creating: fdt/dtc-1.7.0/pylibfdt/
+  inflating: fdt/dtc-1.7.0/pylibfdt/.gitignore  
+  inflating: fdt/dtc-1.7.0/pylibfdt/Makefile.pylibfdt  
+  inflating: fdt/dtc-1.7.0/pylibfdt/libfdt.i  
+  inflating: fdt/dtc-1.7.0/pylibfdt/meson.build  
+   creating: fdt/dtc-1.7.0/scripts/
+  inflating: fdt/dtc-1.7.0/scripts/kup-dtc  
+  inflating: fdt/dtc-1.7.0/scripts/setlocalversion  
+  inflating: fdt/dtc-1.7.0/setup.py  
+  inflating: fdt/dtc-1.7.0/srcpos.c  
+  inflating: fdt/dtc-1.7.0/srcpos.h  
+   creating: fdt/dtc-1.7.0/tests/
+  inflating: fdt/dtc-1.7.0/tests/.gitignore  
+  inflating: fdt/dtc-1.7.0/tests/Makefile.tests  
+  inflating: fdt/dtc-1.7.0/tests/add_subnode_with_nops.c  
+  inflating: fdt/dtc-1.7.0/tests/addr_size_cells.c  
+  inflating: fdt/dtc-1.7.0/tests/addr_size_cells2.c  
+  inflating: fdt/dtc-1.7.0/tests/addresses.dts  
+  inflating: fdt/dtc-1.7.0/tests/aliases.dts  
+  inflating: fdt/dtc-1.7.0/tests/appendprop.dts  
+  inflating: fdt/dtc-1.7.0/tests/appendprop1.c  
+  inflating: fdt/dtc-1.7.0/tests/appendprop2.c  
+  inflating: fdt/dtc-1.7.0/tests/appendprop_addrrange.c  
+  inflating: fdt/dtc-1.7.0/tests/asm_tree_dump.c  
+  inflating: fdt/dtc-1.7.0/tests/bad-chosen.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-dma-ranges.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-empty-ranges.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-gpio.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-graph.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-interrupt-cells.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-interrupt-controller.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-interrupt-map-mask.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-interrupt-map-parent.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-interrupt-map.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-name-property.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-ncells.dts  
+ extracting: fdt/dtc-1.7.0/tests/bad-octal-literal.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-phandle-cells.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-reg-ranges.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-size-cells.dts  
+  inflating: fdt/dtc-1.7.0/tests/bad-string-props.dts  
+  inflating: fdt/dtc-1.7.0/tests/base01.asm  
+ extracting: fdt/dtc-1.7.0/tests/base01.cmd  
+  inflating: fdt/dtc-1.7.0/tests/base01.dts  
+  inflating: fdt/dtc-1.7.0/tests/base01.stderr  
+  inflating: fdt/dtc-1.7.0/tests/boot-cpuid.c  
+  inflating: fdt/dtc-1.7.0/tests/boot-cpuid.dts  
+  inflating: fdt/dtc-1.7.0/tests/cell-overflow-results.dts  
+  inflating: fdt/dtc-1.7.0/tests/cell-overflow.dts  
+  inflating: fdt/dtc-1.7.0/tests/char_literal.c  
+  inflating: fdt/dtc-1.7.0/tests/char_literal.dts  
+  inflating: fdt/dtc-1.7.0/tests/check_full.c  
+  inflating: fdt/dtc-1.7.0/tests/check_header.c  
+  inflating: fdt/dtc-1.7.0/tests/check_path.c  
+  inflating: fdt/dtc-1.7.0/tests/comments-cmp.dts  
+  inflating: fdt/dtc-1.7.0/tests/comments.dts  
+  inflating: fdt/dtc-1.7.0/tests/data.S  
+  inflating: fdt/dtc-1.7.0/tests/default-addr-size.dts  
+  inflating: fdt/dtc-1.7.0/tests/del_node.c  
+  inflating: fdt/dtc-1.7.0/tests/del_property.c  
+  inflating: fdt/dtc-1.7.0/tests/delete_reinstate_multilabel.dts  
+  inflating: fdt/dtc-1.7.0/tests/delete_reinstate_multilabel_ref.dts  
+  inflating: fdt/dtc-1.7.0/tests/dependencies.cmp  
+  inflating: fdt/dtc-1.7.0/tests/dependencies.dts  
+ extracting: fdt/dtc-1.7.0/tests/deps_inc1.dtsi  
+ extracting: fdt/dtc-1.7.0/tests/deps_inc2.dtsi  
+  inflating: fdt/dtc-1.7.0/tests/division-by-zero.dts  
+  inflating: fdt/dtc-1.7.0/tests/dtb_reverse.c  
+  inflating: fdt/dtc-1.7.0/tests/dtbs_equal_ordered.c  
+  inflating: fdt/dtc-1.7.0/tests/dtbs_equal_unordered.c  
+  inflating: fdt/dtc-1.7.0/tests/dtc-checkfails.sh  
+  inflating: fdt/dtc-1.7.0/tests/dtc-fails.sh  
+  inflating: fdt/dtc-1.7.0/tests/dtc-fatal.sh  
+  inflating: fdt/dtc-1.7.0/tests/dumptrees.c  
+  inflating: fdt/dtc-1.7.0/tests/dup-nodename.dts  
+  inflating: fdt/dtc-1.7.0/tests/dup-phandle.dts  
+  inflating: fdt/dtc-1.7.0/tests/dup-propname.dts  
+  inflating: fdt/dtc-1.7.0/tests/embedded_nul.dts  
+  inflating: fdt/dtc-1.7.0/tests/embedded_nul_equiv.dts  
+ extracting: fdt/dtc-1.7.0/tests/empty.dts  
+  inflating: fdt/dtc-1.7.0/tests/escapes.dts  
+  inflating: fdt/dtc-1.7.0/tests/extra-terminating-null.c  
+  inflating: fdt/dtc-1.7.0/tests/extra-terminating-null.dts  
+  inflating: fdt/dtc-1.7.0/tests/fdtdump-runtest.sh  
+  inflating: fdt/dtc-1.7.0/tests/fdtdump.dts  
+  inflating: fdt/dtc-1.7.0/tests/fdtget-runtest.sh  
+  inflating: fdt/dtc-1.7.0/tests/fdtoverlay-runtest.sh  
+  inflating: fdt/dtc-1.7.0/tests/fdtput-runtest.sh  
+  inflating: fdt/dtc-1.7.0/tests/find_property.c  
+ extracting: fdt/dtc-1.7.0/tests/fixup-ref-to-path.dts  
+  inflating: fdt/dtc-1.7.0/tests/fs_tree1.c  
+  inflating: fdt/dtc-1.7.0/tests/get_alias.c  
+  inflating: fdt/dtc-1.7.0/tests/get_mem_rsv.c  
+  inflating: fdt/dtc-1.7.0/tests/get_name.c  
+  inflating: fdt/dtc-1.7.0/tests/get_next_tag_invalid_prop_len.c  
+  inflating: fdt/dtc-1.7.0/tests/get_path.c  
+  inflating: fdt/dtc-1.7.0/tests/get_phandle.c  
+  inflating: fdt/dtc-1.7.0/tests/get_prop_offset.c  
+  inflating: fdt/dtc-1.7.0/tests/getprop.c  
+  inflating: fdt/dtc-1.7.0/tests/good-gpio.dts  
+ extracting: fdt/dtc-1.7.0/tests/incbin.bin  
+  inflating: fdt/dtc-1.7.0/tests/incbin.c  
+  inflating: fdt/dtc-1.7.0/tests/incbin.dts  
+  inflating: fdt/dtc-1.7.0/tests/include0.dts  
+  inflating: fdt/dtc-1.7.0/tests/include1.dts  
+  inflating: fdt/dtc-1.7.0/tests/include2.dts  
+ extracting: fdt/dtc-1.7.0/tests/include3.dts  
+ extracting: fdt/dtc-1.7.0/tests/include4.dts  
+ extracting: fdt/dtc-1.7.0/tests/include5.dts  
+ extracting: fdt/dtc-1.7.0/tests/include5a.dts  
+ extracting: fdt/dtc-1.7.0/tests/include6.dts  
+  inflating: fdt/dtc-1.7.0/tests/include7.dts  
+ extracting: fdt/dtc-1.7.0/tests/include8.dts  
+  inflating: fdt/dtc-1.7.0/tests/integer-expressions.c  
+  inflating: fdt/dtc-1.7.0/tests/label01.dts  
+  inflating: fdt/dtc-1.7.0/tests/label_repeated.dts  
+  inflating: fdt/dtc-1.7.0/tests/line_directives.dts  
+  inflating: fdt/dtc-1.7.0/tests/lorem.txt  
+  inflating: fdt/dtc-1.7.0/tests/mangle-layout.c  
+  inflating: fdt/dtc-1.7.0/tests/meson.build  
+  inflating: fdt/dtc-1.7.0/tests/minusone-phandle.dts  
+  inflating: fdt/dtc-1.7.0/tests/move_and_save.c  
+  inflating: fdt/dtc-1.7.0/tests/multilabel.dts  
+  inflating: fdt/dtc-1.7.0/tests/multilabel_merge.dts  
+  inflating: fdt/dtc-1.7.0/tests/node_check_compatible.c  
+  inflating: fdt/dtc-1.7.0/tests/node_offset_by_compatible.c  
+  inflating: fdt/dtc-1.7.0/tests/node_offset_by_phandle.c  
+  inflating: fdt/dtc-1.7.0/tests/node_offset_by_prop_value.c  
+  inflating: fdt/dtc-1.7.0/tests/nonexist-label-ref.dts  
+  inflating: fdt/dtc-1.7.0/tests/nonexist-node-ref.dts  
+  inflating: fdt/dtc-1.7.0/tests/nonexist-node-ref2.dts  
+  inflating: fdt/dtc-1.7.0/tests/nop_node.c  
+  inflating: fdt/dtc-1.7.0/tests/nop_property.c  
+  inflating: fdt/dtc-1.7.0/tests/nopulate.c  
+  inflating: fdt/dtc-1.7.0/tests/notfound.c  
+  inflating: fdt/dtc-1.7.0/tests/nul-in-escape.dts  
+ extracting: fdt/dtc-1.7.0/tests/nul-in-line-info1.dts  
+ extracting: fdt/dtc-1.7.0/tests/nul-in-line-info2.dts  
+  inflating: fdt/dtc-1.7.0/tests/obsolete-chosen-interrupt-controller.dts  
+  inflating: fdt/dtc-1.7.0/tests/omit-no-ref.dts  
+  inflating: fdt/dtc-1.7.0/tests/open_pack.c  
+  inflating: fdt/dtc-1.7.0/tests/overlay.c  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup.c  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup_bad_index.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup_base.dtsi  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup_empty.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup_empty_index.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup_index_trailing.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup_path_empty_prop.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup_path_only.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup_path_only_sep.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_bad_fixup_path_prop.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_base.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_base_manual_symbols.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_overlay.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_overlay_bypath.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_overlay_local_merge.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_overlay_long_path.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_overlay_manual_fixups.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_overlay_no_fixups.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_overlay_nosugar.dts  
+  inflating: fdt/dtc-1.7.0/tests/overlay_overlay_simple.dts  
+  inflating: fdt/dtc-1.7.0/tests/parent_offset.c  
+  inflating: fdt/dtc-1.7.0/tests/path-references.c  
+  inflating: fdt/dtc-1.7.0/tests/path-references.dts  
+  inflating: fdt/dtc-1.7.0/tests/path_offset.c  
+  inflating: fdt/dtc-1.7.0/tests/path_offset_aliases.c  
+  inflating: fdt/dtc-1.7.0/tests/pci-bridge-bad1.dts  
+  inflating: fdt/dtc-1.7.0/tests/pci-bridge-bad2.dts  
+  inflating: fdt/dtc-1.7.0/tests/pci-bridge-ok.dts  
+  inflating: fdt/dtc-1.7.0/tests/phandle-args-overflow.dts  
+  inflating: fdt/dtc-1.7.0/tests/phandle_format.c  
+  inflating: fdt/dtc-1.7.0/tests/prop-after-subnode.dts  
+  inflating: fdt/dtc-1.7.0/tests/property_iterate.c  
+  inflating: fdt/dtc-1.7.0/tests/property_iterate.dts  
+  inflating: fdt/dtc-1.7.0/tests/propname_escapes.c  
+  inflating: fdt/dtc-1.7.0/tests/propname_escapes.dts  
+  inflating: fdt/dtc-1.7.0/tests/pylibfdt_tests.py  
+  inflating: fdt/dtc-1.7.0/tests/references.c  
+  inflating: fdt/dtc-1.7.0/tests/references.dts  
+  inflating: fdt/dtc-1.7.0/tests/reg-ranges-root.dts  
+  inflating: fdt/dtc-1.7.0/tests/reg-without-unit-addr.dts  
+  inflating: fdt/dtc-1.7.0/tests/relref_merge.c  
+  inflating: fdt/dtc-1.7.0/tests/relref_merge.dts  
+  inflating: fdt/dtc-1.7.0/tests/reuse-label.dts  
+  inflating: fdt/dtc-1.7.0/tests/reuse-label1.dts  
+  inflating: fdt/dtc-1.7.0/tests/reuse-label2.dts  
+  inflating: fdt/dtc-1.7.0/tests/reuse-label3.dts  
+  inflating: fdt/dtc-1.7.0/tests/reuse-label4.dts  
+  inflating: fdt/dtc-1.7.0/tests/reuse-label5.dts  
+  inflating: fdt/dtc-1.7.0/tests/reuse-label6.dts  
+  inflating: fdt/dtc-1.7.0/tests/root_node.c  
+  inflating: fdt/dtc-1.7.0/tests/run_tests.sh  
+  inflating: fdt/dtc-1.7.0/tests/rw_oom.c  
+  inflating: fdt/dtc-1.7.0/tests/rw_tree1.c  
+   creating: fdt/dtc-1.7.0/tests/search_dir/
+ extracting: fdt/dtc-1.7.0/tests/search_dir/search_test.dtsi  
+ extracting: fdt/dtc-1.7.0/tests/search_dir/search_test2.dtsi  
+   creating: fdt/dtc-1.7.0/tests/search_dir_b/
+ extracting: fdt/dtc-1.7.0/tests/search_dir_b/search_paths_subdir.dts  
+ extracting: fdt/dtc-1.7.0/tests/search_dir_b/search_test_b.dtsi  
+ extracting: fdt/dtc-1.7.0/tests/search_dir_b/search_test_b2.dtsi  
+ extracting: fdt/dtc-1.7.0/tests/search_dir_b/search_test_c.dtsi  
+ extracting: fdt/dtc-1.7.0/tests/search_paths.dts  
+ extracting: fdt/dtc-1.7.0/tests/search_paths_b.dts  
+  inflating: fdt/dtc-1.7.0/tests/set_name.c  
+  inflating: fdt/dtc-1.7.0/tests/setprop.c  
+  inflating: fdt/dtc-1.7.0/tests/setprop_inplace.c  
+  inflating: fdt/dtc-1.7.0/tests/sized_cells.c  
+  inflating: fdt/dtc-1.7.0/tests/sized_cells.dts  
+  inflating: fdt/dtc-1.7.0/tests/sourceoutput.dts  
+  inflating: fdt/dtc-1.7.0/tests/stacked_overlay_addlabel.dts  
+  inflating: fdt/dtc-1.7.0/tests/stacked_overlay_bar.dts  
+  inflating: fdt/dtc-1.7.0/tests/stacked_overlay_base.dts  
+  inflating: fdt/dtc-1.7.0/tests/stacked_overlay_base_nolabel.dts  
+  inflating: fdt/dtc-1.7.0/tests/stacked_overlay_baz.dts  
+  inflating: fdt/dtc-1.7.0/tests/string_escapes.c  
+  inflating: fdt/dtc-1.7.0/tests/stringlist.c  
+  inflating: fdt/dtc-1.7.0/tests/stringlist.dts  
+  inflating: fdt/dtc-1.7.0/tests/subnode_iterate.c  
+  inflating: fdt/dtc-1.7.0/tests/subnode_iterate.dts  
+  inflating: fdt/dtc-1.7.0/tests/subnode_offset.c  
+  inflating: fdt/dtc-1.7.0/tests/supernode_atdepth_offset.c  
+  inflating: fdt/dtc-1.7.0/tests/sw_states.c  
+  inflating: fdt/dtc-1.7.0/tests/sw_tree1.c  
+  inflating: fdt/dtc-1.7.0/tests/test01.asm  
+  inflating: fdt/dtc-1.7.0/tests/test01.dts  
+  inflating: fdt/dtc-1.7.0/tests/test01.stderr  
+  inflating: fdt/dtc-1.7.0/tests/test_kernel_dts  
+  inflating: fdt/dtc-1.7.0/tests/test_label_ref.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_props.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_delete.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_label_noderef.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_merge.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_merge_labelled.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_merge_path.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_wrong1.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_wrong2.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_wrong3.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_wrong4.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_wrong5.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_wrong6.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_wrong7.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_wrong8.dts  
+  inflating: fdt/dtc-1.7.0/tests/test_tree1_wrong9.dts  
+  inflating: fdt/dtc-1.7.0/tests/testdata.h  
+  inflating: fdt/dtc-1.7.0/tests/tests.h  
+  inflating: fdt/dtc-1.7.0/tests/testutils.c  
+  inflating: fdt/dtc-1.7.0/tests/testutils.sh  
+  inflating: fdt/dtc-1.7.0/tests/trees.S  
+  inflating: fdt/dtc-1.7.0/tests/truncated_memrsv.c  
+  inflating: fdt/dtc-1.7.0/tests/truncated_property.c  
+  inflating: fdt/dtc-1.7.0/tests/truncated_string.c  
+  inflating: fdt/dtc-1.7.0/tests/type-preservation.dt.yaml  
+  inflating: fdt/dtc-1.7.0/tests/type-preservation.dts  
+  inflating: fdt/dtc-1.7.0/tests/unit-addr-leading-0s.dts  
+  inflating: fdt/dtc-1.7.0/tests/unit-addr-leading-0x.dts  
+  inflating: fdt/dtc-1.7.0/tests/unit-addr-simple-bus-compatible.dts  
+  inflating: fdt/dtc-1.7.0/tests/unit-addr-simple-bus-reg-mismatch.dts  
+  inflating: fdt/dtc-1.7.0/tests/unit-addr-unique.dts  
+  inflating: fdt/dtc-1.7.0/tests/unit-addr-without-reg.dts  
+  inflating: fdt/dtc-1.7.0/tests/utilfdt_test.c  
+  inflating: fdt/dtc-1.7.0/tests/value-labels.c  
+  inflating: fdt/dtc-1.7.0/tests/value-labels.dts  
+  inflating: fdt/dtc-1.7.0/tests/zero-phandle.dts  
+  inflating: fdt/dtc-1.7.0/treesource.c  
+  inflating: fdt/dtc-1.7.0/util.c    
+  inflating: fdt/dtc-1.7.0/util.h    
+ extracting: fdt/dtc-1.7.0/version_gen.h.in  
+  inflating: fdt/dtc-1.7.0/yamltree.c  
+CPP:  /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/scripts/ld.script-> /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/scripts/ld.scriLD: nuttx
+riscv-none-elf-ld: warning: /home/rushabhvg/Desktop/nuttx/nuttx/nuttx has a LOAD segment with RWX permissions
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/staging/libarch.a(riscv_doirq.o): in function `riscv_doirq':
+/home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/common/riscv_doirq.c:61:(.text.riscv_doirq+0x10): undefined reference to `board_autoled_on'
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/common/riscv_doirq.c:129:(.text.riscv_doirq+0x7c): undefined reference to `board_autoled_off'
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/staging/libarch.a(riscv_initialize.o): in function `up_initialize':
+/home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/common/riscv_initialize.c:131:(.text.up_initialize+0x30): undefined reference to `board_autoled_on'
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/staging/libarch.a(riscv_createstack.o): in function `up_create_stack':
+/home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/common/riscv_createstack.c:193:(.text.up_create_stack+0x66): undefined reference to `board_autoled_on'
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/staging/libsched.a(assert.o): in function `_assert':
+/home/rushabhvg/Desktop/nuttx/nuttx/sched/misc/assert.c:576:(.text._assert+0x9c): undefined reference to `board_autoled_on'
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/staging/libsched.a(assert.o): in function `dump_tasks':
+/home/rushabhvg/Desktop/nuttx/nuttx/sched/misc/assert.c:460:(.text._assert+0x26c): undefined reference to `board_autoled_on'
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/sched/misc/assert.c:460:(.text._assert+0x27e): undefined reference to `board_autoled_off'
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/staging/libarch.a(riscv_sigdeliver.o): in function `riscv_sigdeliver':
+/home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/common/riscv_sigdeliver.c:69:(.text.riscv_sigdeliver+0x1c): undefined reference to `board_autoled_on'
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/common/riscv_sigdeliver.c:131:(.text.riscv_sigdeliver+0x8c): undefined reference to `board_autoled_off'
+make[1]: *** [Makefile:189: nuttx] Error 1
+make: *** [tools/Unix.mk:546: nuttx] Error 2
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ 
