@@ -1,0 +1,67 @@
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ tools/configure.sh rv-virt:nsh
+  Copy files
+  Select CONFIG_HOST_LINUX=y
+  Refreshing...
+CP: arch/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/arch/dummy/dummy_kconfig
+CP: boards/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/boards/dummy/dummy_kconfig
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+LN: include/arch to arch/risc-v/include
+LN: include/arch/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/include
+LN: drivers/platform to /home/rushabhvg/Desktop/nuttx/nuttx/drivers/dummy
+LN: include/arch/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/include/qemu-rv
+LN: arch/risc-v/src/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/qemu-rv
+LN: arch/risc-v/src/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/src
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/audioutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/benchmarks
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/boot
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/canutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/crypto
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/database
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/examples/mcuboot
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/examples
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/fsutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/games
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/graphics
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/industry
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/inertial
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/interpreters/luamodules
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/interpreters
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/logging
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/lte
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/math
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/mlearning
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/netutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/sdr
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/system
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/testing
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/wireless/bluetooth
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/wireless/ieee802154
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/wireless
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps
+Loaded configuration '.config'
+Configuration saved to '.config'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ make menuconfig
+CP: arch/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/arch/dummy/dummy_kconfig
+CP: boards/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/boards/dummy/dummy_kconfig
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+LN: include/arch to arch/risc-v/include
+LN: include/arch/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/include
+LN: drivers/platform to /home/rushabhvg/Desktop/nuttx/nuttx/drivers/dummy
+LN: include/arch/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/include/qemu-rv
+LN: arch/risc-v/src/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/qemu-rv
+LN: arch/risc-v/src/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/src
+
+
+*** End of the configuration.
+*** Execute 'make' to start the build or try 'make help'.
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ make
+Create version.h
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+Register: hello
+Register: nsh
+Register: sh
+Register: getprime
+Register: ostest
+CPP:  /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/scripts/ld.script-> /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/scripts/ld.scriLD: nuttx
+riscv-none-elf-ld: warning: /home/rushabhvg/Desktop/nuttx/nuttx/nuttx has a LOAD segment with RWX permissions
