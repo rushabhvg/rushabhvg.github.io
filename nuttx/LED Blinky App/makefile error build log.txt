@@ -1,0 +1,245 @@
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ tools/configure.sh rv-virt:leds
+  Copy files
+  Select CONFIG_HOST_LINUX=y
+  Refreshing...
+CP: arch/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/arch/dummy/dummy_kconfig
+CP: boards/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/boards/dummy/dummy_kconfig
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+LN: include/arch to arch/risc-v/include
+LN: include/arch/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/include
+LN: drivers/platform to /home/rushabhvg/Desktop/nuttx/nuttx/drivers/dummy
+LN: include/arch/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/include/qemu-rv
+LN: arch/risc-v/src/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/qemu-rv
+LN: arch/risc-v/src/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/src
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/audioutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/benchmarks
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/boot
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/canutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/crypto
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/database
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/examples/mcuboot
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/examples
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/fsutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/games
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/graphics
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/industry
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/inertial
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/interpreters/luamodules
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/interpreters
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/logging
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/lte
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/math
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/mlearning
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/netutils
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/sdr
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/system
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/testing
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/wireless/bluetooth
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/wireless/ieee802154
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps/wireless
+mkkconfig in /home/rushabhvg/Desktop/nuttx/apps
+Loaded configuration '.config'
+Configuration saved to '.config'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ make menuconfig
+CP: arch/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/arch/dummy/dummy_kconfig
+CP: boards/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/boards/dummy/dummy_kconfig
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+LN: include/arch to arch/risc-v/include
+LN: include/arch/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/include
+LN: drivers/platform to /home/rushabhvg/Desktop/nuttx/nuttx/drivers/dummy
+LN: include/arch/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/include/qemu-rv
+LN: arch/risc-v/src/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/qemu-rv
+LN: arch/risc-v/src/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/src
+
+
+*** End of the configuration.
+*** Execute 'make' to start the build or try 'make help'.
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ pushd ../apps/examples/hello_rust
+~/Desktop/nuttx/apps/examples/hello_rust ~/Desktop/nuttx/nuttx ~/Desktop/nuttx/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rm -f riscv32gc-unknown-none-elf.json
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ wget https://raw.githubusercontent.com/lupyuen/nuttx-rust-app/main/riscv32gc-unknown-none-elf.json
+--2024-07-17 18:55:26--  https://raw.githubusercontent.com/lupyuen/nuttx-rust-app/main/riscv32gc-unknown-none-elf.json
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 421 [text/plain]
+Saving to: ‘riscv32gc-unknown-none-elf.json’
+
+riscv32gc-unknown-none-elf.json           100%[==================================================================================>]     421  --.-KB/s    in 0s      
+
+2024-07-17 18:55:27 (5.80 MB/s) - ‘riscv32gc-unknown-none-elf.json’ saved [421/421]
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustup show
+Default host: x86_64-unknown-linux-gnu
+rustup home:  /home/rushabhvg/.rustup
+
+installed toolchains
+--------------------
+
+stable-x86_64-unknown-linux-gnu (default)
+nightly-x86_64-unknown-linux-gnu
+
+installed targets for active toolchain
+--------------------------------------
+
+riscv32i-unknown-none-elf
+riscv64gc-unknown-none-elf
+x86_64-unknown-linux-gnu
+
+active toolchain
+----------------
+
+stable-x86_64-unknown-linux-gnu (default)
+rustc 1.76.0 (07dca489a 2024-02-04)
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustup override set nightly
+info: override toolchain for '/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust' set to 'nightly-x86_64-unknown-linux-gnu'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustup show
+Default host: x86_64-unknown-linux-gnu
+rustup home:  /home/rushabhvg/.rustup
+
+installed toolchains
+--------------------
+
+stable-x86_64-unknown-linux-gnu (default)
+nightly-x86_64-unknown-linux-gnu
+
+installed targets for active toolchain
+--------------------------------------
+
+riscv32i-unknown-none-elf
+x86_64-unknown-linux-gnu
+
+active toolchain
+----------------
+
+nightly-x86_64-unknown-linux-gnu (directory override for '/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust')
+rustc 1.81.0-nightly (032be6f7b 2024-07-16)
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustc \
+  --print cfg \
+  --target riscv32gc-unknown-none-elf.json
+debug_assertions
+overflow_checks
+panic="abort"
+relocation_model="static"
+target_abi=""
+target_arch="riscv32"
+target_endian="little"
+target_env=""
+target_feature="a"
+target_feature="c"
+target_feature="d"
+target_feature="f"
+target_feature="m"
+target_os="none"
+target_pointer_width="32"
+target_vendor="unknown"
+ub_checks
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ cargo new app
+    Creating binary (application) `app` package
+note: see more `Cargo.toml` keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ pushd app/
+~/Desktop/nuttx/apps/examples/hello_rust/app ~/Desktop/nuttx/apps/examples/hello_rust ~/Desktop/nuttx/nuttx ~/Desktop/nuttx/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo clean
+     Removed 0 files
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build \
+  -Zbuild-std=core,alloc \
+  --target ../riscv32gc-unknown-none-elf.json
+   Compiling compiler_builtins v0.1.109
+   Compiling core v0.0.0 (/home/rushabhvg/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core)
+   Compiling rustc-std-workspace-core v1.99.0 (/home/rushabhvg/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/rustc-std-workspace-core)
+   Compiling alloc v0.0.0 (/home/rushabhvg/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc)
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+error[E0463]: can't find crate for `std`
+  |
+  = note: the `riscv32gc-unknown-none-elf` target may not support the standard library
+  = note: `std` is required by `app` because it does not declare `#![no_std]`
+  = help: consider building the standard library from source with `cargo build -Zbuild-std`
+
+error: cannot find macro `println` in this scope
+ --> src/main.rs:2:5
+  |
+2 |     println!("Hello, world!");
+  |     ^^^^^^^
+
+error: `#[panic_handler]` function required, but not found
+
+error: requires `sized` lang_item
+
+For more information about this error, try `rustc --explain E0463`.
+error: could not compile `app` (bin "app") due to 4 previous errors
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+error[E0308]: mismatched types
+  --> src/main.rs:12:14
+   |
+12 | fn main() -> ! {
+   |    ----      ^ expected `!`, found `()`
+   |    |
+   |    implicitly returns `()` as its body has no tail or `return` expression
+   |
+   = note:   expected type `!`
+           found unit type `()`
+
+For more information about this error, try `rustc --explain E0308`.
+error: could not compile `app` (bin "app") due to 1 previous error
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.13s
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ popd
+~/Desktop/nuttx/apps/examples/hello_rust ~/Desktop/nuttx/nuttx ~/Desktop/nuttx/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ ls app/target/riscv32gc-unknown-none-elf/debug/deps
+alloc-b7f6a0cda8b440a0.d              liballoc-b7f6a0cda8b440a0.rlib               libcore-0591e4e8f1a295ba.rmeta
+app-d3ccd1fc0d5d2c4a                  liballoc-b7f6a0cda8b440a0.rmeta              librustc_std_workspace_core-99a9e3cf8265baef.rlib
+app-d3ccd1fc0d5d2c4a.d                libcompiler_builtins-d18e85680caee9d4.rlib   librustc_std_workspace_core-99a9e3cf8265baef.rmeta
+compiler_builtins-d18e85680caee9d4.d  libcompiler_builtins-d18e85680caee9d4.rmeta  rustc_std_workspace_core-99a9e3cf8265baef.d
+core-0591e4e8f1a295ba.d               libcore-0591e4e8f1a295ba.rlib
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ hello=$(basename ../hello/*hello.o)
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ hello_rust=`
+  echo $hello \
+  | sed "s/hello_main.c/hello_rust_main.rs/" \
+  | sed "s/hello.o/hello_rust.o/"
+  `
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ hello_rust_1=`
+  echo $hello_rust \
+  | sed "s/hello_rust.o/hello_rust_1.o/"
+  `
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustc \
+  --target riscv32gc-unknown-none-elf.json \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  hello_rust_main.rs \
+  -o $hello_rust \
+  \
+  -C incremental=app/target/riscv32gc-unknown-none-elf/debug/incremental \
+  -L dependency=app/target/riscv32gc-unknown-none-elf/debug/deps \
+  -L dependency=app/target/debug/deps \
+  --extern noprelude:alloc=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/liballoc-*.rlib` \
+  --extern noprelude:compiler_builtins=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcompiler_builtins-*.rlib` \
+  --extern noprelude:core=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcore-*.rlib` \
+  -Z unstable-options
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ cp $hello_rust $hello_rust_1
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ popd
+~/Desktop/nuttx/nuttx ~/Desktop/nuttx/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ make
+Create version.h
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+Register: hello
+Register: hello_rust
+Register: leds
+Register: nsh
+Register: sh
+Register: getprime
+Register: ostest
+CPP:  /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/scripts/ld.script-> /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/scriptsLD: nuttx
+riscv-none-elf-ld: /home/rushabhvg/Desktop/nuttx/nuttx/staging/libapps.a(hello_rust_main.rs.home.rushabhvg.Desktop.nuttx.apps.examples.hello_rust_1.o): can't link soft-float modules with double-float modules
+riscv-none-elf-ld: failed to merge target specific data of file /home/rushabhvg/Desktop/nuttx/nuttx/staging/libapps.a(hello_rust_main.rs.home.rushabhvg.Desktop.nuttx.apps.examples.hello_rust_1.o)
+riscv-none-elf-ld: warning: /home/rushabhvg/Desktop/nuttx/nuttx/nuttx has a LOAD segment with RWX permissions
+make[1]: *** [Makefile:189: nuttx] Error 1
+make: *** [tools/Unix.mk:546: nuttx] Error 2
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$
