@@ -1,0 +1,504 @@
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ rustup install nightly
+info: syncing channel updates for 'nightly-x86_64-unknown-linux-gnu'
+info: latest update on 2024-07-17, rust version 1.81.0-nightly (032be6f7b 2024-07-16)
+info: downloading component 'rust-std' for 'riscv32i-unknown-none-elf'
+  9.4 MiB /   9.4 MiB (100 %)   3.0 MiB/s in  3s ETA:  0s
+info: downloading component 'cargo'
+info: downloading component 'clippy'
+info: downloading component 'rust-docs'
+info: downloading component 'rust-std'
+ 27.1 MiB /  27.1 MiB (100 %)  15.9 MiB/s in  1s ETA:  0s
+info: downloading component 'rustc'
+ 67.6 MiB /  67.6 MiB (100 %)  19.9 MiB/s in  3s ETA:  0s
+info: downloading component 'rustfmt'
+info: removing previous version of component 'rust-std' for 'riscv32i-unknown-none-elf'
+info: removing previous version of component 'cargo'
+info: removing previous version of component 'clippy'
+info: removing previous version of component 'rust-docs'
+info: removing previous version of component 'rust-std'
+info: removing previous version of component 'rustc'
+info: removing previous version of component 'rustfmt'
+info: installing component 'rust-std' for 'riscv32i-unknown-none-elf'
+  9.4 MiB /   9.4 MiB (100 %)   9.2 MiB/s in  1s ETA:  0s
+info: installing component 'cargo'
+info: installing component 'clippy'
+info: installing component 'rust-docs'
+ 15.9 MiB /  15.9 MiB (100 %)   7.1 MiB/s in  2s ETA:  0s
+info: installing component 'rust-std'
+ 27.1 MiB /  27.1 MiB (100 %)   9.2 MiB/s in  2s ETA:  0s
+info: installing component 'rustc'
+ 67.6 MiB /  67.6 MiB (100 %)   9.9 MiB/s in  6s ETA:  0s
+info: installing component 'rustfmt'
+
+  nightly-x86_64-unknown-linux-gnu updated - rustc 1.81.0-nightly (032be6f7b 2024-07-16) (from rustc 1.78.0-nightly (766bdce74 2024-03-16))
+
+info: checking for self-update
+info: downloading self-update
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+error: the `-Z` flag is only accepted on the nightly channel of Cargo, but this is the `stable` channel
+See https://doc.rust-lang.org/book/appendix-07-nightly-rust.html for more information about Rust release channels.
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ rustup override set nightly
+info: override toolchain for '/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app' set to 'nightly-x86_64-unknown-linux-gnu'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+error: "/home/rushabhvg/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/Cargo.lock" does not exist, unable to build with the standard library, try:
+        rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+error: "/home/rushabhvg/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/Cargo.lock" does not exist, unable to build with the standard library, try:
+        rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+info: downloading component 'rust-src'
+info: installing component 'rust-src'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+    Updating crates.io index
+  Downloaded adler v1.0.2
+  Downloaded cfg-if v1.0.0
+  Downloaded getopts v0.2.21
+  Downloaded rustc-demangle v0.1.24
+  Downloaded addr2line v0.22.0
+  Downloaded miniz_oxide v0.7.4
+  Downloaded allocator-api2 v0.2.18
+  Downloaded memchr v2.5.0
+  Downloaded hashbrown v0.14.5
+  Downloaded compiler_builtins v0.1.109
+  Downloaded gimli v0.29.0
+  Downloaded object v0.36.0
+  Downloaded unicode-width v0.1.13
+  Downloaded libc v0.2.155
+  Downloaded 14 crates (2.4 MB) in 0.54s
+   Compiling core v0.0.0 (/home/rushabhvg/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core)
+   Compiling compiler_builtins v0.1.109
+   Compiling rustc-std-workspace-core v1.99.0 (/home/rushabhvg/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/rustc-std-workspace-core)
+   Compiling alloc v0.0.0 (/home/rushabhvg/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc)
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+error[E0463]: can't find crate for `std`
+  |
+  = note: the `riscv32gc-unknown-none-elf` target may not support the standard library
+  = note: `std` is required by `app` because it does not declare `#![no_std]`
+  = help: consider building the standard library from source with `cargo build -Zbuild-std`
+
+error: cannot find macro `println` in this scope
+ --> src/main.rs:2:5
+  |
+2 |     println!("Hello, world!");
+  |     ^^^^^^^
+
+error: `#[panic_handler]` function required, but not found
+
+error: requires `sized` lang_item
+
+For more information about this error, try `rustc --explain E0463`.
+error: could not compile `app` (bin "app") due to 4 previous errors
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+error: cannot find macro `println` in this scope
+ --> src/main.rs:4:5
+  |
+4 |     println!("Hello, world!");
+  |     ^^^^^^^
+
+error: `#[panic_handler]` function required, but not found
+
+error: could not compile `app` (bin "app") due to 2 previous errors
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+error: `#[panic_handler]` function required, but not found
+
+error: could not compile `app` (bin "app") due to 1 previous error
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+error[E0412]: cannot find type `PanicInfo` in this scope
+ --> src/main.rs:4:19
+  |
+4 | fn panic(_panic: &PanicInfo<'_>) -> ! {
+  |                   ^^^^^^^^^ not found in this scope
+  |
+help: consider importing this struct
+  |
+3 + use core::panic::PanicInfo;
+  |
+
+For more information about this error, try `rustc --explain E0412`.
+error: could not compile `app` (bin "app") due to 1 previous error
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+error: using `fn main` requires the standard library
+  |
+  = help: use `#![no_main]` to bypass the Rust generated entrypoint and declare a platform specific entrypoint yourself, usually with `#[no_mangle]`
+
+error: could not compile `app` (bin "app") due to 1 previous error
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+error: using `fn main` requires the standard library
+  |
+  = help: use `#![no_main]` to bypass the Rust generated entrypoint and declare a platform specific entrypoint yourself, usually with `#[no_mangle]`
+
+error: could not compile `app` (bin "app") due to 1 previous error
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cargo build   -Zbuild-std=core,alloc   --target ../riscv32gc-unknown-none-elf.json
+   Compiling app v0.1.0 (/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ popd
+~/Desktop/nuttx/apps/examples/hello_rust ~/Desktop/nuttx/nuttx ~/Desktop/nuttx/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ ls app/target/riscv32gc-unknown-none-elf/debug/deps
+alloc-b7f6a0cda8b440a0.d              libcompiler_builtins-d18e85680caee9d4.rlib
+app-d3ccd1fc0d5d2c4a                  libcompiler_builtins-d18e85680caee9d4.rmeta
+app-d3ccd1fc0d5d2c4a.d                libcore-0591e4e8f1a295ba.rlib
+compiler_builtins-d18e85680caee9d4.d  libcore-0591e4e8f1a295ba.rmeta
+core-0591e4e8f1a295ba.d               librustc_std_workspace_core-99a9e3cf8265baef.rlib
+liballoc-b7f6a0cda8b440a0.rlib        librustc_std_workspace_core-99a9e3cf8265baef.rmeta
+liballoc-b7f6a0cda8b440a0.rmeta       rustc_std_workspace_core-99a9e3cf8265baef.d
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustc \
+  --target riscv32gc-unknown-none-elf.json \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  ../apps/examples/hello_rust/hello_rust_main.rs \
+  -o ../apps/examples/hello_rust/*hello_rust.o \
+  \
+  -C incremental=app/target/riscv32gc-unknown-none-elf/debug/incremental \
+  -L dependency=app/target/riscv32gc-unknown-none-elf/debug/deps \
+  -L dependency=app/target/debug/deps \
+  --extern noprelude:alloc=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/liballoc-*.rlib` \
+  --extern noprelude:compiler_builtins=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcompiler_builtins-*.rlib` \
+  --extern noprelude:core=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcore-*.rlib` \
+  -Z unstable-options
+error: the option `Z` is only accepted on the nightly compiler
+
+help: consider switching to a nightly toolchain: `rustup default nightly`
+
+note: selecting a toolchain with `+toolchain` arguments require a rustup proxy; see <https://rust-lang.github.io/rustup/concepts/index.html>
+
+note: for more information about Rust's stability policy, see <https://doc.rust-lang.org/book/appendix-07-nightly-rust.html#unstable-features>
+
+error: 1 nightly option were parsed
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustup show
+Default host: x86_64-unknown-linux-gnu
+rustup home:  /home/rushabhvg/.rustup
+
+installed toolchains
+--------------------
+
+stable-x86_64-unknown-linux-gnu (default)
+nightly-x86_64-unknown-linux-gnu
+
+installed targets for active toolchain
+--------------------------------------
+
+riscv32i-unknown-none-elf
+riscv64gc-unknown-none-elf
+x86_64-unknown-linux-gnu
+
+active toolchain
+----------------
+
+stable-x86_64-unknown-linux-gnu (default)
+rustc 1.76.0 (07dca489a 2024-02-04)
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ cd app/
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ rustup show
+Default host: x86_64-unknown-linux-gnu
+rustup home:  /home/rushabhvg/.rustup
+
+installed toolchains
+--------------------
+
+stable-x86_64-unknown-linux-gnu (default)
+nightly-x86_64-unknown-linux-gnu
+
+installed targets for active toolchain
+--------------------------------------
+
+riscv32i-unknown-none-elf
+x86_64-unknown-linux-gnu
+
+active toolchain
+----------------
+
+nightly-x86_64-unknown-linux-gnu (directory override for '/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust/app')
+rustc 1.81.0-nightly (032be6f7b 2024-07-16)
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust/app$ cd ../
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustup override set nightly
+info: override toolchain for '/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust' set to 'nightly-x86_64-unknown-linux-gnu'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustup show
+Default host: x86_64-unknown-linux-gnu
+rustup home:  /home/rushabhvg/.rustup
+
+installed toolchains
+--------------------
+
+stable-x86_64-unknown-linux-gnu (default)
+nightly-x86_64-unknown-linux-gnu
+
+installed targets for active toolchain
+--------------------------------------
+
+riscv32i-unknown-none-elf
+x86_64-unknown-linux-gnu
+
+active toolchain
+----------------
+
+nightly-x86_64-unknown-linux-gnu (directory override for '/home/rushabhvg/Desktop/nuttx/apps/examples/hello_rust')
+rustc 1.81.0-nightly (032be6f7b 2024-07-16)
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustc \
+  --target riscv32gc-unknown-none-elf.json \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  ../apps/examples/hello_rust/hello_rust_main.rs \
+  -o ../apps/examples/hello_rust/*hello_rust.o \
+  \
+  -C incremental=app/target/riscv32gc-unknown-none-elf/debug/incremental \
+  -L dependency=app/target/riscv32gc-unknown-none-elf/debug/deps \
+  -L dependency=app/target/debug/deps \
+  --extern noprelude:alloc=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/liballoc-*.rlib` \
+  --extern noprelude:compiler_builtins=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcompiler_builtins-*.rlib` \
+  --extern noprelude:core=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcore-*.rlib` \
+  -Z unstable-options
+error: couldn't read ../apps/examples/hello_rust/hello_rust_main.rs: No such file or directory (os error 2)
+
+error: aborting due to 1 previous error
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ cd ../
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples$ rustup show
+Default host: x86_64-unknown-linux-gnu
+rustup home:  /home/rushabhvg/.rustup
+
+installed toolchains
+--------------------
+
+stable-x86_64-unknown-linux-gnu (default)
+nightly-x86_64-unknown-linux-gnu
+
+installed targets for active toolchain
+--------------------------------------
+
+riscv32i-unknown-none-elf
+riscv64gc-unknown-none-elf
+x86_64-unknown-linux-gnu
+
+active toolchain
+----------------
+
+stable-x86_64-unknown-linux-gnu (default)
+rustc 1.76.0 (07dca489a 2024-02-04)
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples$ rustup override set nightly
+info: override toolchain for '/home/rushabhvg/Desktop/nuttx/apps/examples' set to 'nightly-x86_64-unknown-linux-gnu'
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples$ rustup show
+Default host: x86_64-unknown-linux-gnu
+rustup home:  /home/rushabhvg/.rustup
+
+installed toolchains
+--------------------
+
+stable-x86_64-unknown-linux-gnu (default)
+nightly-x86_64-unknown-linux-gnu
+
+installed targets for active toolchain
+--------------------------------------
+
+riscv32i-unknown-none-elf
+x86_64-unknown-linux-gnu
+
+active toolchain
+----------------
+
+nightly-x86_64-unknown-linux-gnu (directory override for '/home/rushabhvg/Desktop/nuttx/apps/examples')
+rustc 1.81.0-nightly (032be6f7b 2024-07-16)
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples$ rustc   --target riscv32gc-unknown-none-elf.json   --edition 2021   --emit obj   -g   -C panic=abort   -O   ../apps/examples/hello_rust/hello_rust_main.rs   -o ../apps/examples/hello_rust/*hello_rust.o     -C incremental=app/target/riscv32gc-unknown-none-elf/debug/incremental   -L dependency=app/target/riscv32gc-unknown-none-elf/debug/deps   -L dependency=app/target/debug/deps   --extern noprelude:alloc=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/liballoc-*.rlib`   --extern noprelude:compiler_builtins=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcompiler_builtins-*.rlib`   --extern noprelude:core=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcore-*.rlib`   -Z unstable-options
+ls: cannot access 'app/target/riscv32gc-unknown-none-elf/debug/deps/liballoc-*.rlib': No such file or directory
+ls: cannot access 'app/target/riscv32gc-unknown-none-elf/debug/deps/libcompiler_builtins-*.rlib': No such file or directory
+ls: cannot access 'app/target/riscv32gc-unknown-none-elf/debug/deps/libcore-*.rlib': No such file or directory
+error: target file "riscv32gc-unknown-none-elf.json" does not exist
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples$ cd hello_rust/
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustc \
+  --target riscv32gc-unknown-none-elf.json \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  ../apps/examples/hello_rust/hello_rust_main.rs \
+  -o ../apps/examples/hello_rust/*hello_rust.o \
+  \
+  -C incremental=app/target/riscv32gc-unknown-none-elf/debug/incremental \
+  -L dependency=app/target/riscv32gc-unknown-none-elf/debug/deps \
+  -L dependency=app/target/debug/deps \
+  --extern noprelude:alloc=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/liballoc-*.rlib` \
+  --extern noprelude:compiler_builtins=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcompiler_builtins-*.rlib` \
+  --extern noprelude:core=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcore-*.rlib` \
+  -Z unstable-options
+error: couldn't read ../apps/examples/hello_rust/hello_rust_main.rs: No such file or directory (os error 2)
+
+error: aborting due to 1 previous error
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustc \
+  --target riscv32gc-unknown-none-elf.json \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  hello_rust_main.rs \
+  -o *hello_rust.o \
+  \
+  -C incremental=app/target/riscv32gc-unknown-none-elf/debug/incremental \
+  -L dependency=app/target/riscv32gc-unknown-none-elf/debug/deps \
+  -L dependency=app/target/debug/deps \
+  --extern noprelude:alloc=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/liballoc-*.rlib` \
+  --extern noprelude:compiler_builtins=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcompiler_builtins-*.rlib` \
+  --extern noprelude:core=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcore-*.rlib` \
+  -Z unstable-options
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ riscv64-unknown-elf-readelf \
+  --file-header --arch-specific \
+  *hello_rust.o
+ELF Header:
+  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF32
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              REL (Relocatable file)
+  Machine:                           RISC-V
+  Version:                           0x1
+  Entry point address:               0x0
+  Start of program headers:          0 (bytes into file)
+  Start of section headers:          11492 (bytes into file)
+  Flags:                             0x5, RVC, double-float ABI
+  Size of this header:               52 (bytes)
+  Size of program headers:           0 (bytes)
+  Number of program headers:         0
+  Size of section headers:           40 (bytes)
+  Number of section headers:         26
+  Section header string table index: 1
+Attribute Section: riscv
+File Attributes
+  Tag_RISCV_stack_align: 16-bytes
+  Tag_RISCV_arch: "rv32i2p1_m2p0_a2p1_f2p2_d2p2_c2p0_zicsr2p0"
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ hello=$(basename ../hello/*hello.o)
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ hello_rust=`
+  echo $hello \
+  | sed "s/hello_main.c/hello_rust_main.rs/" \
+  | sed "s/hello.o/hello_rust.o/"
+  `
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ hello_rust_1=`
+  echo $hello_rust \
+  | sed "s/hello_rust.o/hello_rust_1.o/"
+  `
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustc   --target riscv32gc-unknown-none-elf.json   --edition 2021   --emit obj   -g   -C panic=abort   -O   hello_rust_main.rs   -o *hello_rust.o     -C incremental=app/target/riscv32gc-unknown-none-elf/debug/incremental   -L dependency=app/target/riscv32gc-unknown-none-elf/debug/deps   -L dependency=app/target/debug/deps   --extern noprelude:alloc=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/liballoc-*.rlib`   --extern noprelude:compiler_builtins=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcompiler_builtins-*.rlib`   --extern noprelude:core=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcore-*.rlib`   -Z unstable-options
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustc \
+  --target riscv64gc-unknown-none-elf \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  hello_rust_main.rs \
+  -o $hello_rust
+error[E0463]: can't find crate for `core`
+  |
+  = note: the `riscv64gc-unknown-none-elf` target may not be installed
+  = help: consider downloading the target with `rustup target add riscv64gc-unknown-none-elf`
+  = help: consider building the standard library from source with `cargo build -Zbuild-std`
+
+error: aborting due to 1 previous error
+
+For more information about this error, try `rustc --explain E0463`.
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ hello=$(basename ../hello/*hello.o)
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ hello_rust=`
+  echo $hello \
+  | sed "s/hello_main.c/hello_rust_main.rs/" \
+  | sed "s/hello.o/hello_rust.o/"
+  `
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ hello_rust_1=`
+  echo $hello_rust \
+  | sed "s/hello_rust.o/hello_rust_1.o/"
+  `
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ rustc \
+  --target riscv32gc-unknown-none-elf.json \
+  --edition 2021 \
+  --emit obj \
+  -g \
+  -C panic=abort \
+  -O \
+  hello_rust_main.rs \
+  -o $hello_rust \
+  \
+  -C incremental=app/target/riscv32gc-unknown-none-elf/debug/incremental \
+  -L dependency=app/target/riscv32gc-unknown-none-elf/debug/deps \
+  -L dependency=app/target/debug/deps \
+  --extern noprelude:alloc=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/liballoc-*.rlib` \
+  --extern noprelude:compiler_builtins=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcompiler_builtins-*.rlib` \
+  --extern noprelude:core=`ls app/target/riscv32gc-unknown-none-elf/debug/deps/libcore-*.rlib` \
+  -Z unstable-options
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ cp $hello_rust $hello_rust_1
+\rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/apps/examples/hello_rust$ popd
+~/Desktop/nuttx/nuttx ~/Desktop/nuttx/nuttx
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ make
+Create version.h
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+Register: hello
+Register: leds
+Register: nsh
+Register: sh
+Register: getprime
+Register: ostest
+CPP:  /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/scripts/ld.script-> /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/scriptsLD: nuttx
+riscv-none-elf-ld: warning: /home/rushabhvg/Desktop/nuttx/nuttx/nuttx has a LOAD segment with RWX permissions
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ qemu-system-riscv32 \
+  -semihosting \
+  -M virt,aclint=on \
+  -cpu rv32 \
+  -bios none \
+  -kernel nuttx \
+  -nographic
+ABCboard_userled: LED 1 set to 0
+board_userled: LED 2 set to 0
+board_userled: LED 3 set to 0
+
+NuttShell (NSH) NuttX-12.5.1
+nsh> uname -a
+NuttX 12.5.1 62c912e643 Jul 17 2024 18:44:59 risc-v rv-virt
+nsh> hello_rust
+nsh: hello_rust: command not found
+nsh> hello_rust
+nsh: hello_rust: command not found
+nsh> hello
+Hello, World!!
+Opening /dev/userleds
+Set LED 0 to 1
+board_userled: LED 1 set to 1
+board_userled: LED 2 set to 0
+board_userled: LED 3 set to 0
+Waiting...
+Set LED 0 to 0
+board_userled: LED 1 set to 0
+board_userled: LED 2 set to 0
+board_userled: LED 3 set to 0
+nsh> QEMU: Terminated
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ make menuconfig 
+CP: arch/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/arch/dummy/dummy_kconfig
+CP: boards/dummy/Kconfig to /home/rushabhvg/Desktop/nuttx/nuttx/boards/dummy/dummy_kconfig
+LN: platform/board to /home/rushabhvg/Desktop/nuttx/apps/platform/dummy
+LN: include/arch to arch/risc-v/include
+LN: include/arch/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/include
+LN: drivers/platform to /home/rushabhvg/Desktop/nuttx/nuttx/drivers/dummy
+LN: include/arch/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/include/qemu-rv
+LN: arch/risc-v/src/chip to /home/rushabhvg/Desktop/nuttx/nuttx/arch/risc-v/src/qemu-rv
+LN: arch/risc-v/src/board to /home/rushabhvg/Desktop/nuttx/nuttx/boards/risc-v/qemu-rv/rv-virt/src
+
+
+*** End of the configuration.
+*** Execute 'make' to start the build or try 'make help'.
+
+rushabhvg@rushabhvg-laptop:~/Desktop/nuttx/nuttx$ 
