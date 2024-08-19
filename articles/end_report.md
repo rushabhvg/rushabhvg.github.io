@@ -1,5 +1,3 @@
-<div align="justify">
-  
 # GSoC Final Report
 
 Hello! Welcome to my blog about my experience with GSOC 2024!
@@ -98,5 +96,3 @@ I would also like to thank my parents, other family members and friends for thei
 Finally, I am grateful to Google, Stephanie and Lucila (GSoC Admins) for organizing the 20th Google Summer of Code and for providing a platform for students like me to learn and contribute to open-source projects.
 
 Thank you once again to everyone who made this experience enriching and unforgettable.
-
-</div>
