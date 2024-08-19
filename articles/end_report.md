@@ -61,14 +61,21 @@ I am Rushabh Vipul Gala, studying Computer Science and Engineering at the Univer
 - A good mentor can help even a newbie become Beginner to Intermediate developer
 
 ## QnA with my mentor Mr. Lup Yuen Lee
-1. Think of a NuttX Developer, creating a NuttX App in Rust for the very first time. Have we done enough to help them? How else could we have helped?
-Ans. Yes, we have enought to help an experienced NuttX Developer to create a NuttX App in Rust. Although, they might face difficulties in understanding the Rust Syntax, with time they should be able to easily understand Rust. We have developed and coded many NuttX POSIX APIs in Rust, which will help them in abstracting the underlying Unsafe code. There's still a small room for improvement and developing more such APIs.
+_(a) Think of a NuttX Developer, creating a NuttX App in Rust for the very first time. Have we done enough to help them? How else could we have helped?_
 
-1. In the First Half of GSoC, we ran Rust Apps on Ox64 BL808 RISC-V SBC. In the Second Half, we ran Rust Apps on QEMU RISC-V. Why was it necessary to do both?
-Ans. Yes, we ran Rust Apps on Ox64 BL808 RISC-V SBC in the first half because NuttX and NuttX Apps are real-world applications, which are better to build, run, and test on a physical hardware to resolve any errors or glitches in the code. Since, not everyone has an Ox64 BL808 RISC-V SBC, and it's difficult to run the App on each existing Hardware, we had built, ran, and tested the Apps in QEMU RISC-V emulator, to make sure the Apps works on other architectures too.
+Yes, we have enought to help an experienced NuttX Developer to create a NuttX App in Rust. Although, they might face difficulties in understanding the Rust Syntax, with time they should be able to easily understand Rust. We have developed and wrote NuttX POSIX APIs in Rust, which will help them in abstracting the Unsafe code. There's still a small room for improvement and developing more such APIs.
 
-1. Which topics should NuttX Project explore for the next GSoC? Create more NuttX Apps or NuttX Drivers (like for Ox64 BL808 SBC)? Or should NuttX Project collaborate directly with universities, and work on team-based projects?
-Ans. There are many topics that NuttX Project could explore for the next GSoC, such as NuttX support for other platforms, creating more NuttX Apps for showcasing the capabilities of NuttX OS and the Community, or maybe a deep and thorough cleaning of the NuttX Codebase and Documentation. And, I believe it would be better to create more NuttX Drivers, which will enable more developers to create various Apps relying on the NuttX Drivers. I think, it's a good idea to collaborate directly with the universities to work on team-based projects. This will help the NuttX community to get new developers and the ideas they come up with. I think it's also beneficial for the students to learn and code in the standard way using Git.
+_(b) In the First Half of GSoC, we ran Rust Apps on Ox64 BL808 RISC-V SBC. In the Second Half, we ran Rust Apps on QEMU RISC-V. Why was it necessary to do both?_
+
+Yes, we ran Rust Apps on Ox64 BL808 RISC-V SBC in the first half because NuttX and NuttX Apps are real-world applications, which are better to build, run, and test on a physical hardware to resolve any errors or glitches in the code. Since, not everyone has an Ox64 BL808 RISC-V SBC, and it's difficult to run the App on each existing Hardware, we had built, ran, and tested the Apps in QEMU RISC-V emulator, to make sure the Apps works on other architectures too.
+
+_(c) Which topics should NuttX Project explore for the next GSoC? Create more NuttX Apps or NuttX Drivers (like for Ox64 BL808 SBC)?_
+
+There are many topics that NuttX Project could explore for the next GSoC, such as NuttX support for other platforms, creating more NuttX Apps for showcasing the capabilities of NuttX OS and the Community, or maybe a deep and thorough cleaning of the NuttX Codebase and Documentation. And, I believe it would be better to create more NuttX Drivers, which will enable more developers to create various Apps relying on the NuttX Drivers.
+
+_(d) Should NuttX Project collaborate directly with universities, and work on team-based projects?_
+
+I think, it's a good idea to collaborate directly with the universities to work on team-based projects. This will help the NuttX community to get new developers and the ideas they come up with. I think it's also beneficial for the students to learn and code in the standard way using Git.
 
 ## Acknowledgments
 
