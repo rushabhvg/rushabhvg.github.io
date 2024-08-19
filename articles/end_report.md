@@ -84,12 +84,12 @@ I am also thankful to Mahadev, Bhagwan Vishnu, and all the gods and goddesses fo
 
 I am incredibly grateful to Mr. Lup Yuen Lee for his continuous support, patience, and invaluable guidance throughout the GSoC. His expertise as an experienced developer and as a lecturer were very helful in shaping my understanding and skills in embedded systems as a novice student developer.
 
-A special thank you to the Apache Software Foundation for providing me with this amazing opportunity to participate in GSoC. The resources and community at the Apache Software Foundation were essential in helping me achieve my goals and grow as a developer.
+A special thank you to the Apache Software Foundation. The resources and community at the Apache Software Foundation were essential in helping me achieve my goals and grow as a developer.
 
-I am also grateful to PINE64 for sponsoring me with two Ox64 Single Board Computers featuring the Bouffalo Lab BL808 RISC-V SoC, along with the setup tools. These resources were essential for testing my code and applications on physical hardware for the first half of the GSoC and sometimes in the second half.
+I am also grateful to PINE64 for sponsoring me with two Ox64 Single Board Computer BL808 RISC-V SoC, along with the setup tools. These resources were essential for testing my code and applications on physical hardware.
 
 I extend my thanks to the NuttX Community: Alan Carvalho de Assis, Tomasz Cedro, Xiang Xiao, and Alin Jerpelea,
-my fellow GSoC-mate Saurav Pal, and others for their assistance and encouragement during challenging phases of the project. Their feedback and advice significantly contributed to the success of the project.
+my fellow GSoC-mate Saurav Pal, and others for their assistance and encouragement during challenging phases of the project.
 
 I would also like to thank my parents, other family members and friends for their support throughout this journey.
 
