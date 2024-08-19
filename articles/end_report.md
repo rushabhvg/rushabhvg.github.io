@@ -5,15 +5,13 @@ Hello! Welcome to my blog about my experience with GSOC 2024!
 ## Introduction
 I am Rushabh Vipul Gala, studying Computer Science and Engineering at the University of Mumbai, India. I love to solve real-world challenges, and want to contribute for the betterment of the world. I have a keen interest in new technologies. And I am thrilled to be able to contribute to the Open Source Community through Google Summer of Code (GSoC).
 
-## A short description of the goals of the project
-The main goals were to:
+## The main goals were to:
 - Identify and Address obstacles with Rust Apps in NuttX
 - Implement Embedded Rust Apps in NuttX
 - Update NuttX Community about Rust Apps in NuttX through NuttX International Workshop
 - Develop and Test the LED Blinky Rust App in NuttX for various architectures
 
-## What you did
-What I did mainly is:
+## What I did mainly is:
 - Configure and Set-Up Ox64 SBC
 - Install and Boot NuttX on Ox64 SBC
 - Implement Embedded Rust for NuttX
@@ -38,7 +36,7 @@ What I did mainly is:
 - [Add Rust Target for QEMU RISC-V 64-bit](https://github.com/apache/nuttx/pull/12858)
 - [Add Build Config for leds64_rust](https://github.com/apache/nuttx/pull/12862)
 
-## What code got merged (or not) upstream
+## What code got merged upstream
 - All of the code got merged
 - [Added GPIO Driver for Ox64 SBC](https://github.com/apache/nuttx/pull/12571)
 - [Added LED Driver for Ox64 SBC](https://github.com/apache/nuttx/pull/12614)
@@ -46,15 +44,15 @@ What I did mainly is:
 - [Added Rust App for blinking the LED](https://github.com/apache/nuttx-apps/pull/2462)
 - A new application with new configuration files was made: `leds_rust_main.rs`
 
-## Any challenges or important things you learned during the project
+## Some challenges and important things I learned during the project
 - I faced many challenges as mentioned in the [mid-term report] (https://github.com/rushabhvg/rushabhvg.github.io/blob/master/articles/mid_term_blog_post.md)
 - NuttX and NuttX Apps can't be built using Cargo. Hence, we had to make and build Rust Apps without Cargo.
 - Enhanced my skills in Programming in C, Rust and Scripting.
 - Learnt various standard practises of coding and programming in general
 - How to create a good PR (Pull Request)
-- And along all these things, my mentor Mr. Lup Lee Yuen, an experienced developer and a retired professor, has taught me countless small advices and tips to become a better programmer.
+- And along all these things, my mentor Mr. Lup Yuen Lee, an experienced developer and a retired professor, has taught me countless small advices and tips to become a better programmer.
 
-## Things I learnt
+## Something I learnt
 - Task Priortisation is important while handling deadlines
 - Documentation may take time and it's curcial for the future development
 - How to use Git and GitHub using Command-line and the Desktop Application.
